@@ -1,0 +1,62 @@
+version: "3.0"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+- story: intro
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- story: order coffee
+  steps:
+  - intent: order_coffee
+  - action: utter_order_coffee
+  - intent: ask_coffee_list # optional
+  - action: return_coffee_list # py
+
+  - intent: answer_coffee_name 
+  - action: check_coffee_name # py
+  - active_loop: coffee_preference_form
+  - action: return_coffee_info 
+  - intent: confirm_coffee_info
+  - active_loop: customer_info_form
+  - action: return_customer_info
+  - intent: confirm_customer_info
+  - action: submit_order # py
+
+# 1. slot的内容如何识别
+# 2. or逻辑如何实现
+# 3. action 的 python 逻辑
+# 4. coffee的种类和属性
+# 5. rules 和 stories 的区别
+
+  
+  
+
