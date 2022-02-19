@@ -34,22 +34,52 @@ stories:
   - intent: greet
   - action: utter_greet
 
-- story: order coffee
+
+# order coffee
+
+- story: Activate coffee preference form, provide a list of coffee
   steps:
   - intent: order_coffee
   - action: utter_order_coffee
-  - intent: ask_coffee_list # optional
-  - action: return_coffee_list # py
-
-  - intent: answer_coffee_name 
-  - action: check_coffee_name # py
+  - active_loop: null
+  - intent: ask_coffee_list
+  - action: action_coffee_list
+  - action: utter_ask_coffee_name
+  - intent: inform_coffee_name
+  - action: action_confirm_coffee_name
+  - action: coffee_preference_form
   - active_loop: coffee_preference_form
-  - action: return_coffee_info 
-  - intent: confirm_coffee_info
-  - active_loop: customer_info_form
-  - action: return_customer_info
-  - intent: confirm_customer_info
-  - action: submit_order # py
+
+- story: Activate coffee preference form, user input a coffee name
+  steps:
+  - intent: order_coffee
+  - action: utter_order_coffee
+  - active_loop: null
+  - intent: inform_coffee_name
+  - action: action_confirm_coffee_name
+  - action: coffee_preference_form
+  - active_loop: coffee_preference_form
+
+
+
+
+# - story: order coffee
+#   steps:
+#   - intent: order_coffee
+#   - action: utter_order_coffee
+#   # - intent: ask_coffee_list # optional
+#   # - action: return_coffee_list # py
+
+#   # - intent: answer_coffee_name 
+#   # - action: check_coffee_name # py
+#   - action: coffee_preference_form
+#   - active_loop: coffee_preference_form
+#   # - action: return_coffee_info 
+  # - intent: confirm_coffee_info
+  # - active_loop: customer_info_form
+  # - action: return_customer_info
+  # - intent: confirm_customer_info
+  # - action: submit_order # py
 
 # 1. slot的内容如何识别
 # 2. or逻辑如何实现

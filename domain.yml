@@ -9,6 +9,12 @@ intents:
   - mood_unhappy
   - bot_challenge
   - order_coffee
+  - inform_sweetness
+  - inform_size
+  - inform_ice_or_hot
+  - inform_add_milk_or_not
+  - ask_coffee_list
+  - inform_coffee_name
 
 entities:
 - sweetness
@@ -18,8 +24,9 @@ entities:
 - email
 - address
 - customer_name
+- coffee_name
 
-# todo: 找每个slot可能对应哪些词
+
 slots:
   sweetness:
     type: text
@@ -91,7 +98,21 @@ slots:
       - active_loop: coffee_preference_form
     - type: from_entity
       entity: customer_name
-  
+
+  coffee_name:
+    type: text
+    influence_conversation: false
+    mappings:
+    - entity: coffee_name
+      type: from_entity
+    - type: from_entity
+      entity: coffee_name
+
+  coffee_name_is_collected:
+    type: bool
+    influence_conversation: true
+    mappings:
+    - type: custom
 
 responses:
   utter_greet:
@@ -117,9 +138,33 @@ responses:
   - text: "What kind of coffee do you want?"
   - text: "What kind of coffee?"
 
+  utter_ask_coffee_preference_form_sweetness:
+  - text: "Sweetness?"
+
+  utter_ask_coffee_preference_form_size:
+  - text: "Which size?"
+
+  utter_ask_coffee_preference_form_ice_or_hot:
+  - text: "Ice or hot?"
+
+  utter_ask_coffee_preference_form_add_milk_or_not:
+  - text: "Add milk or no milk?"
+
+  utter_coffee_preference_form_completed:
+  - text: "Everything is completed!"
+
+  utter_ask_coffee_name:
+  - text: "Please select one coffee"
+  - text: "What kind of coffee do you want?"
+
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+
+actions:
+- action_coffee_list
+- action_confirm_coffee_name
+
 
 forms:
   coffee_preference_form:

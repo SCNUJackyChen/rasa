@@ -11,3 +11,18 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+
+
+- rule: Submit order status form, coffee name collected
+  condition:
+  - active_loop: coffee_preference_form
+  - slot_was_set:
+    - coffee_name_is_collected: True
+  steps:
+  - action: coffee_preference_form
+  - active_loop: null
+  - action: action_confirm_order_status
+  - action: utter_coffee_preference_form_completed
+
+

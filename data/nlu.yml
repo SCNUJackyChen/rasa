@@ -100,3 +100,73 @@ nlu:
     - I want a cup of coffee
     - I want to order coffee
 
+- intent: inform_sweetness
+  examples: |
+    - [sweet](sweetness) coffee
+    - [sweet](sweetness) one
+    - add [sugar](sweetness)
+    - [sugar](sweetness)
+
+- intent: inform_size
+  examples: |
+    - [big](size)
+    - [small](size)
+    - [medium](size)
+    - [big](size) cup
+    - a [big](size) one
+    - [small](size) cup
+    - a [small](size) one
+    - [medium](size) cup
+    - a [medium](size) one
+
+- intent: inform_ice_or_hot
+  examples: |
+    - [ice](ice_or_hot)
+    - [hot](ice_or_hot)
+
+- intent: inform_add_milk_or_not
+  examples: |
+    - [milk](add_milk_or_not)
+    - [no milk](add_milk_or_not)
+
+- intent: ask_coffee_list
+  examples: |
+    - What kind of coffee do you have?
+    - Could you give me a coffee list?
+    - Any choice?
+
+- intent: inform_coffee_name
+  examples: |
+    - [kopi O](coffee_name)
+    - [kopi C](coffee_name)
+    - [Espresso](coffee_name)
+    - [Latte](coffee_name)
+    - [Cappuccino](coffee_name)
+    - [Americano](coffee_name)
+
+- lookup: sweetness
+  examples: |
+    - sweet
+    - sugar
+    - less sugar
+    - less sweet
+    - half sweet
+
+- lookup: size
+  examples: |
+    - big
+    - medium
+    - small
+
+- lookup: ice_or_hot
+  examples: |
+    - ice
+    - hot
+
+- lookup: add_milk_or_not
+  examples: |
+    - milk
+    - no milk
+    - no
+    - sure
+    - yes

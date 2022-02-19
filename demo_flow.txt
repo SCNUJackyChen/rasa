@@ -1,0 +1,36 @@
+
+Your input ->  hi                                                               
+Hey! How are you?
+Your input ->  I want a cup of coffee                                           
+What kind of coffee do you want?
+Your input ->  kopi O                                                           
+Your choice: kopi O
+Sweetness?
+Your input ->  sugar                                                            
+Which size?
+Your input ->  small                                                            
+Ice or hot?
+Your input ->  ice                                                              
+Add milk or no milk?
+Your input ->  no milk                                                          
+Everything is completed!
+
+-----------------------------------------------------------------
+
+Your input ->  hi                                                               
+Hey! How are you?
+Your input ->  coffee                                                           
+What kind of coffee?
+Your input ->  Any choice?                                                      
+Here are our coffee list: kopi O, kopi C, Espresso, Latte, Cappuccino, AmericanoPlease select one coffee
+Your input ->  kopi C                                                           
+Your choice: kopi C
+Sweetness?
+Your input ->  sugar                                                            
+Which size?
+Your input ->  small                                                            
+Ice or hot?
+Your input ->  ice                                                              
+Add milk or no milk?
+Your input ->  add milk                                                         
+Everything is completed!
