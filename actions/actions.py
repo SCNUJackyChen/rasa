@@ -11,7 +11,7 @@ from typing import Any, Text, Dict, List
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import SlotSet
+from rasa_sdk.events import SlotSet, AllSlotsReset
 
 path_to_db = "actions/coffee_name.txt"
 coffee_names = []
@@ -54,3 +54,25 @@ class ActionConfirmCoffeeName(Action):
         
         dispatcher.utter_message(text = res)
         return ret
+
+class ActionResetCoffeePreferenceForm(Action):
+
+    def name(self):
+        return "action_reset_coffee_preference_form"
+
+    def run(self, dispatcher, tracker, domain):
+        return [SlotSet("sweetness", None), \
+                SlotSet("size", None), \
+                SlotSet("ice_or_hot", None), \
+                SlotSet("add_milk_or_not", None)]   
+
+                
+class ActionResetCustomerInfoForm(Action):
+
+    def name(self):
+        return "action_reset_customer_info_form"
+
+    def run(self, dispatcher, tracker, domain):
+        return [SlotSet("email", None), \
+                SlotSet("address", None), \
+                SlotSet("customer_name", None)]  

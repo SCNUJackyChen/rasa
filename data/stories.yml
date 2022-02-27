@@ -37,7 +37,7 @@ stories:
 
 # order coffee
 
-- story: Activate coffee preference form, provide a list of coffee
+- story: Activate coffee preference form, provide a list of coffee 📄
   steps:
   - intent: order_coffee
   - action: utter_order_coffee
@@ -49,8 +49,20 @@ stories:
   - action: action_confirm_coffee_name
   - action: coffee_preference_form
   - active_loop: coffee_preference_form
+  - slot_was_set:
+    - requested_slot: sweetness
+  - slot_was_set:
+    - requested_slot: size
+  - slot_was_set:
+    - requested_slot: ice_or_hot
+  - slot_was_set:
+    - requested_slot: add_milk_or_not
+  - active_loop: null
+  - action: utter_coffee_pre_submit
+  - action: utter_coffee_pre_values
 
-- story: Activate coffee preference form, user input a coffee name
+  
+- story: Activate coffee preference form, user input a coffee name ☕
   steps:
   - intent: order_coffee
   - action: utter_order_coffee
@@ -59,6 +71,93 @@ stories:
   - action: action_confirm_coffee_name
   - action: coffee_preference_form
   - active_loop: coffee_preference_form
+  - slot_was_set:
+    - requested_slot: sweetness
+  - slot_was_set:
+    - requested_slot: size
+  - slot_was_set:
+    - requested_slot: ice_or_hot
+  - slot_was_set:
+    - requested_slot: add_milk_or_not
+  - active_loop: null
+  - action: utter_coffee_pre_submit
+  - action: utter_coffee_pre_values  
+
+
+- story: ☕ coffee preference form finish, user agree 👍
+  steps:
+  - action: utter_coffee_pre_submit
+  - action: utter_coffee_pre_values
+  - intent: affirm
+  - action: utter_customer_info
+  - action: customer_info_form
+  - active_loop: customer_info_form  # fill customer info form
+  - slot_was_set:
+    - requested_slot: email
+  - slot_was_set:
+    - requested_slot: address
+  - slot_was_set:
+    - requested_slot: customer_name
+  - active_loop: null
+  - action: utter_customer_info_submit
+  - action: utter_customer_info_values  
+
+- story: ☕ coffee preference form finish, user deny ❌
+  steps:
+  - action: utter_coffee_pre_submit
+  - action: utter_coffee_pre_values
+  - intent: deny
+  - action: action_reset_coffee_preference_form
+  - active_loop: null
+  - action: action_coffee_list
+  - action: utter_ask_coffee_name
+  - intent: inform_coffee_name
+  - action: action_confirm_coffee_name
+  - action: coffee_preference_form
+  - active_loop: coffee_preference_form
+  - slot_was_set:
+    - requested_slot: sweetness
+  - slot_was_set:
+    - requested_slot: size
+  - slot_was_set:
+    - requested_slot: ice_or_hot
+  - slot_was_set:
+    - requested_slot: add_milk_or_not
+  - active_loop: null
+  - action: utter_coffee_pre_submit
+  - action: utter_coffee_pre_values
+
+
+
+- story: 👨 customer information form finish, user agree 👍
+  steps:
+  - action: utter_customer_info_submit
+  - action: utter_customer_info_values
+  - intent: affirm
+  - action: utter_completed
+
+- story: 👨 customer information form filling, user deny ❌
+  steps:
+  - action: utter_customer_info_submit
+  - action: utter_customer_info_values
+  - intent: deny
+  - action: action_reset_customer_info_form
+  - active_loop: null
+  - action: utter_customer_info  
+  - action: customer_info_form
+  - active_loop: customer_info_form
+  - slot_was_set:
+    - requested_slot: email
+  - slot_was_set:
+    - requested_slot: address
+  - slot_was_set:
+    - requested_slot: customer_name
+  - active_loop: null
+  - action: utter_customer_info_submit
+  - action: utter_customer_info_values 
+
+
+
 
 
 
@@ -89,4 +188,5 @@ stories:
 
   
   
+
 

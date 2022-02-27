@@ -1,5 +1,4 @@
 version: "3.0"
-
 nlu:
 - intent: greet
   examples: |
@@ -21,7 +20,6 @@ nlu:
     - heyy
     - Hey!!!
     - hallo?
-
 - intent: goodbye
   examples: |
     - cu
@@ -34,7 +32,6 @@ nlu:
     - see you around
     - bye bye
     - see you later
-
 - intent: affirm
   examples: |
     - yes
@@ -43,7 +40,10 @@ nlu:
     - of course
     - that sounds good
     - correct
-
+    - it is right
+    - sure
+    - true
+    - that is true
 - intent: deny
   examples: |
     - no
@@ -53,7 +53,6 @@ nlu:
     - don't like that
     - no way
     - not really
-
 - intent: mood_great
   examples: |
     - perfect
@@ -70,7 +69,6 @@ nlu:
     - so so perfect
     - so good
     - so perfect
-
 - intent: mood_unhappy
   examples: |
     - my day was horrible
@@ -87,26 +85,24 @@ nlu:
     - extremly sad
     - so saad
     - so sad
-
 - intent: bot_challenge
   examples: |
     - are you a bot?
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
-
 - intent: order_coffee
   examples: |
     - I want a cup of coffee
     - I want to order coffee
-
+    - drink coffee
 - intent: inform_sweetness
   examples: |
     - [sweet](sweetness) coffee
     - [sweet](sweetness) one
     - add [sugar](sweetness)
     - [sugar](sweetness)
-
+    - [sugar](sweetness)
 - intent: inform_size
   examples: |
     - [big](size)
@@ -118,23 +114,20 @@ nlu:
     - a [small](size) one
     - [medium](size) cup
     - a [medium](size) one
-
 - intent: inform_ice_or_hot
   examples: |
     - [ice](ice_or_hot)
     - [hot](ice_or_hot)
-
 - intent: inform_add_milk_or_not
   examples: |
     - [milk](add_milk_or_not)
     - [no milk](add_milk_or_not)
-
 - intent: ask_coffee_list
   examples: |
     - What kind of coffee do you have?
     - Could you give me a coffee list?
     - Any choice?
-
+    - any choice?
 - intent: inform_coffee_name
   examples: |
     - [kopi O](coffee_name)
@@ -143,7 +136,23 @@ nlu:
     - [Latte](coffee_name)
     - [Cappuccino](coffee_name)
     - [Americano](coffee_name)
-
+    - [kopi O](coffee_name)
+- intent: inform_email
+  examples: |
+    - My email is [coffee@example.com](email)
+    - [bot@example.com](email)
+    - email
+- intent: inform_address
+  examples: |
+    - My address is [21 Lower Kent Ridge Rd, Singapore 119077](address)
+    - [Bank of China Building, 4 Battery Rd, 049908](address)
+    - I live in [10 Bayfront Ave, Singapore 018956](address)
+- intent: inform_customer_name
+  examples: |
+    - My name is [James](customer_name)
+    - [Robert](customer_name)
+    - The name is [Mary](customer_name)
+    - [Jennifer](customer_name)
 - lookup: sweetness
   examples: |
     - sweet
@@ -152,17 +161,19 @@ nlu:
     - less sweet
     - half sweet
 
+- regex: email
+  examples: |
+    - [a-zA-Z0-9._-]+@([a-zA-Z0-9.-]+\.)+[a-zA-Z]{2,4}
+
 - lookup: size
   examples: |
     - big
     - medium
     - small
-
 - lookup: ice_or_hot
   examples: |
     - ice
     - hot
-
 - lookup: add_milk_or_not
   examples: |
     - milk

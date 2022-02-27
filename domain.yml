@@ -1,32 +1,34 @@
-version: "3.0"
-
+version: '3.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
 intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-  - order_coffee
-  - inform_sweetness
-  - inform_size
-  - inform_ice_or_hot
-  - inform_add_milk_or_not
-  - ask_coffee_list
-  - inform_coffee_name
-
+- ask_coffee_list
+- order_coffee
+- inform_sweetness
+- greet
+- inform_coffee_name
+- inform_size
+- inform_add_milk_or_not
+- inform_ice_or_hot
+- goodbye
+- affirm
+- deny
+- mood_great
+- mood_unhappy
+- bot_challenge
+- inform_email
+- inform_address
+- inform_customer_name
 entities:
-- sweetness
-- size
-- ice_or_hot
 - add_milk_or_not
-- email
 - address
-- customer_name
 - coffee_name
-
-
+- customer_name
+- email
+- ice_or_hot
+- size
+- sweetness
 slots:
   sweetness:
     type: text
@@ -75,7 +77,7 @@ slots:
     - entity: email
       type: from_entity
       conditions:
-      - active_loop: coffee_preference_form
+      - active_loop: customer_info_form
     - type: from_entity
       entity: email
   address:
@@ -85,7 +87,7 @@ slots:
     - entity: address
       type: from_entity
       conditions:
-      - active_loop: coffee_preference_form
+      - active_loop: customer_info_form
     - type: from_entity
       entity: address
   customer_name:
@@ -95,10 +97,9 @@ slots:
     - entity: customer_name
       type: from_entity
       conditions:
-      - active_loop: coffee_preference_form
+      - active_loop: customer_info_form
     - type: from_entity
       entity: customer_name
-
   coffee_name:
     type: text
     influence_conversation: false
@@ -107,65 +108,62 @@ slots:
       type: from_entity
     - type: from_entity
       entity: coffee_name
-
   coffee_name_is_collected:
     type: bool
     influence_conversation: true
     mappings:
     - type: custom
-
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
-
+  - text: Hey! How are you?
   utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
+  - text: 'Here is something to cheer you up:'
+    image: https://i.imgur.com/nGF1K8f.jpg
   utter_did_that_help:
-  - text: "Did that help you?"
-
+  - text: Did that help you?
   utter_happy:
-  - text: "Great, carry on!"
-
+  - text: Great, carry on!
   utter_goodbye:
-  - text: "Bye"
-
+  - text: Bye
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-
+  - text: I am a bot, powered by Rasa.
   utter_order_coffee:
-  - text: "What kind of coffee do you want?"
-  - text: "What kind of coffee?"
-
+  - text: What kind of coffee do you want?
+  - text: What kind of coffee?
   utter_ask_coffee_preference_form_sweetness:
-  - text: "Sweetness?"
-
+  - text: Sweetness?
   utter_ask_coffee_preference_form_size:
-  - text: "Which size?"
-
+  - text: Which size?
   utter_ask_coffee_preference_form_ice_or_hot:
-  - text: "Ice or hot?"
-
+  - text: Ice or hot?
   utter_ask_coffee_preference_form_add_milk_or_not:
-  - text: "Add milk or no milk?"
-
-  utter_coffee_preference_form_completed:
-  - text: "Everything is completed!"
-
+  - text: Add milk or no milk?
+  utter_ask_customer_info_form_email:
+  - text: What is your email?
+  utter_ask_customer_info_form_address:
+  - text: Please give me your address?
+  utter_ask_customer_info_form_customer_name:
+  - text: What's your name?
   utter_ask_coffee_name:
-  - text: "Please select one coffee"
-  - text: "What kind of coffee do you want?"
-
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true
-
+  - text: Please select one coffee
+  - text: What kind of coffee do you want?
+  utter_coffee_pre_submit:
+  - text: OK. Thanks!
+  utter_coffee_pre_values:
+  - text: 'Please confirm your order: you ordered a {coffee_name},{sweetness},{size} size,{ice_or_hot},{add_milk_or_not}. Is that right?'
+  utter_customer_info_submit:
+  - text: OK. Everything is completed!
+  utter_customer_info_values:
+  - text: 'Please confirm your delivery information: Your name is {customer_name}. The delivery address is {address}. The email is {email}. Is that right?'
+  utter_completed:
+  - text: Your order has been placed. We will deliver it as soon as possible. Thanks!
+  utter_customer_info:
+  - text: Now I need your shipping information.
 actions:
 - action_coffee_list
 - action_confirm_coffee_name
-
-
+- action_reset_customer_info_form
+- action_reset_coffee_preference_form
 forms:
   coffee_preference_form:
     ignored_intents: []
@@ -174,7 +172,6 @@ forms:
     - size
     - ice_or_hot
     - add_milk_or_not
-
   customer_info_form:
     ignored_intents: []
     required_slots:

@@ -1,36 +1,53 @@
-
-Your input ->  hi                                                               
+Your input ->  hi                                                                                                                
 Hey! How are you?
-Your input ->  I want a cup of coffee                                           
-What kind of coffee do you want?
-Your input ->  kopi O                                                           
+Your input ->  drink coffee                                                                                                      
+What kind of coffee?
+Your input ->  kopi O                                                                                                            
 Your choice: kopi O
 Sweetness?
-Your input ->  sugar                                                            
+Your input ->  sugar                                                                                                             
 Which size?
-Your input ->  small                                                            
+Your input ->  big                                                                                                               
 Ice or hot?
-Your input ->  ice                                                              
+Your input ->  ice                                                                                                               
 Add milk or no milk?
-Your input ->  no milk                                                          
-Everything is completed!
-
------------------------------------------------------------------
-
-Your input ->  hi                                                               
-Hey! How are you?
-Your input ->  coffee                                                           
-What kind of coffee?
-Your input ->  Any choice?                                                      
-Here are our coffee list: kopi O, kopi C, Espresso, Latte, Cappuccino, AmericanoPlease select one coffee
-Your input ->  kopi C                                                           
+Your input ->  milk                                                                                                              
+OK. Thanks!
+Please confirm your order: you ordered a kopi O,sugar,big size,ice,milk. Is that right?
+Your input ->  no                                                                                                                
+Here are our coffee list: kopi O, kopi C, Espresso, Latte, Cappuccino, Americano
+Please select one coffee
+Your input ->  kopi C                                                                                                            
 Your choice: kopi C
 Sweetness?
-Your input ->  sugar                                                            
+Your input ->  sugar                                                                                                             
 Which size?
-Your input ->  small                                                            
+Your input ->  small                                                                                                             
 Ice or hot?
-Your input ->  ice                                                              
+Your input ->  hot                                                                                                               
 Add milk or no milk?
-Your input ->  add milk                                                         
-Everything is completed!
+Your input ->  no milk                                                                                                           
+OK. Thanks!
+Please confirm your order: you ordered a kopi C,sugar,small size,hot,no milk. Is that right?
+Your input ->  yes                                                                                                               
+Now I need your shipping information.
+What is your email?
+Your input ->  chenziqi@u.nus.edu                                                                                                
+Please give me your address?
+Your input ->  120511                                                                                                            
+What's your name?
+Your input ->  James                                                                                                             
+OK. Everything is completed!
+Please confirm your delivery information: Your name is James. The delivery address is 120511. The email is chenziqi@u.nus.edu. Is that right?
+Your input ->  no                                                                                                                
+Now I need your shipping information.
+What is your email?
+Your input ->  jackyc@gmail.com                                                                                                  
+Please give me your address?
+Your input ->  120511                                                                                                            
+What's your name?
+Your input ->  Jacky                                                                                                             
+OK. Everything is completed!
+Please confirm your delivery information: Your name is Jacky. The delivery address is 120511. The email is jackyc@gmail.com. Is that right?
+Your input ->  yes                                                                                                               
+Your order has been placed. We will deliver it as soon as possible. Thanks!

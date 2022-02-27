@@ -14,15 +14,73 @@ rules:
 
 
 
-- rule: Submit order status form, coffee name collected
-  condition:
-  - active_loop: coffee_preference_form
-  - slot_was_set:
-    - coffee_name_is_collected: True
-  steps:
-  - action: coffee_preference_form
-  - active_loop: null
-  - action: action_confirm_order_status
-  - action: utter_coffee_preference_form_completed
+# - rule: Submit order status form, coffee name collected
+#   condition:
+#   - active_loop: coffee_preference_form
+#   - slot_was_set:
+#     - coffee_name_is_collected: True
+#   steps:
+#   - action: coffee_preference_form
+#   - active_loop: null
+#   - action: action_confirm_order_status
+#   - action: utter_coffee_preference_form_completed
+
+# - rule: Submit coffee preference form
+#   condition:
+#   - active_loop: coffee_preference_form
+#   steps:
+#   - action: coffee_preference_form
+#   - active_loop: null
+#   - slot_was_set:
+#     - requested_slot: null
+#   - action: utter_coffee_pre_submit
+#   - action: utter_coffee_pre_values
+#   - intent: affirm
+#   - action: utter_customer_info
+#   - action: customer_info_form
+#   - active_loop: customer_info_form
 
 
+  
+# - rule: Submit coffee preference form, user changes preference
+#   condition:
+#   - active_loop: coffee_preference_form
+#   steps:
+#   - action: coffee_preference_form
+#   - active_loop: null
+#   - slot_was_set:
+#     - requested_slot: null
+#   - action: utter_coffee_pre_submit
+#   - action: utter_coffee_pre_values
+#   - intent: deny
+#   - action: action_coffee_list
+#   - action: utter_ask_coffee_name
+#   - intent: inform_coffee_name
+#   - action: action_confirm_coffee_name
+#   - action: coffee_preference_form
+#   - active_loop: coffee_preference_form
+
+  
+# - rule: Activate customer info form
+#   #condition:
+#   #- action: utter_coffee_pre_values
+#   #- intent: affirm
+#   steps:
+#   - intent: affirm
+#   - action: customer_info_form
+#   - active_loop: customer_info_form
+
+
+
+# - rule: Submit customer info form
+#   condition:
+#   - active_loop: customer_info_form
+#   steps:
+#   - action: customer_info_form
+#   - active_loop: null
+#   - slot_was_set:
+#     - requested_slot: null
+#   - action: utter_customer_info_submit
+#   - action: utter_customer_info_values
+#   - intent: affirm
+#   - action: utter_completed
