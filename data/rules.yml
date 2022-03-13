@@ -13,7 +13,6 @@ rules:
   - action: utter_iamabot
 
 
-
 # - rule: Submit order status form, coffee name collected
 #   condition:
 #   - active_loop: coffee_preference_form

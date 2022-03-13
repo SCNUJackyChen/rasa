@@ -5,12 +5,13 @@ session_config:
 intents:
 - ask_coffee_list
 - order_coffee
-- inform_sweetness
+- inform_Sweetness
 - greet
 - inform_coffee_name
-- inform_size
-- inform_add_milk_or_not
-- inform_ice_or_hot
+- inform_Size
+- inform_Milkness
+- inform_State
+- inform_Strength
 - goodbye
 - affirm
 - deny
@@ -20,56 +21,68 @@ intents:
 - inform_email
 - inform_address
 - inform_customer_name
+- inform_select_preference
 entities:
-- add_milk_or_not
+- State
 - address
 - coffee_name
 - customer_name
 - email
-- ice_or_hot
-- size
-- sweetness
+- Milkness
+- Size
+- Sweetness
+- Strength
 slots:
-  sweetness:
+  Sweetness:
     type: text
     influence_conversation: false
     mappings:
-    - entity: sweetness
+    - entity: Sweetness
       type: from_entity
       conditions:
       - active_loop: coffee_preference_form
     - type: from_entity
-      entity: sweetness
-  size:
+      entity: Sweetness
+  Size:
     type: text
     influence_conversation: false
     mappings:
-    - entity: size
+    - entity: Size
       type: from_entity
       conditions:
       - active_loop: coffee_preference_form
     - type: from_entity
-      entity: size
-  ice_or_hot:
+      entity: Size
+  State:
     type: text
     influence_conversation: false
     mappings:
-    - entity: ice_or_hot
+    - entity: State
       type: from_entity
       conditions:
       - active_loop: coffee_preference_form
     - type: from_entity
-      entity: ice_or_hot
-  add_milk_or_not:
+      entity: State
+  Milkness:
     type: text
     influence_conversation: false
     mappings:
-    - entity: add_milk_or_not
+    - entity: Milkness
       type: from_entity
       conditions:
       - active_loop: coffee_preference_form
     - type: from_entity
-      entity: add_milk_or_not
+      entity: Milkness
+  Strength:
+    type: text
+    influence_conversation: false
+    mappings:
+    - entity: Strength
+      type: from_entity
+      conditions:
+      - active_loop: coffee_preference_form
+    - type: from_entity
+      entity: Strength
   email:
     type: text
     influence_conversation: false
@@ -115,7 +128,7 @@ slots:
     - type: custom
 responses:
   utter_greet:
-  - text: Hey! How are you?
+  - text: Hi! Welcome to CoffeeFun! What can I help for you?
   utter_cheer_up:
   - text: 'Here is something to cheer you up:'
     image: https://i.imgur.com/nGF1K8f.jpg
@@ -128,29 +141,43 @@ responses:
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
   utter_order_coffee:
-  - text: What kind of coffee do you want?
-  - text: What kind of coffee?
-  utter_ask_coffee_preference_form_sweetness:
+  - text: What kind of coffee do you want? (If you don't know what you want, no worry, let me help you!)
+  - text: What kind of coffee? (If you don't know what you want, no worry, let me help you!)
+  utter_ask_coffee_preference_form_Sweetness:
   - text: Sweetness?
-  utter_ask_coffee_preference_form_size:
+  utter_ask_coffee_preference_form_Size:
   - text: Which size?
-  utter_ask_coffee_preference_form_ice_or_hot:
-  - text: Ice or hot?
-  utter_ask_coffee_preference_form_add_milk_or_not:
-  - text: Add milk or no milk?
+  utter_ask_coffee_preference_form_State:
+  - text: Iced, lukewarm or warm?
+  utter_ask_coffee_preference_form_Milkness:
+  - text: Condensed milk, evaporated milk or no milk?
+  utter_ask_coffee_preference_form_Strength:
+  - text: What about the strength? Weak, normal, strong or stronger(no water)?
+  utter_ask_coffee_name_form_coffee_name:
+  - text: What coffee do you want to order?
+  - text: What kind of coffee do you want?
   utter_ask_customer_info_form_email:
   - text: What is your email?
   utter_ask_customer_info_form_address:
   - text: Please give me your address?
   utter_ask_customer_info_form_customer_name:
   - text: What's your name?
-  utter_ask_coffee_name:
-  - text: Please select one coffee
-  - text: What kind of coffee do you want?
   utter_coffee_pre_submit:
   - text: OK. Thanks!
   utter_coffee_pre_values:
-  - text: 'Please confirm your order: you ordered a {coffee_name},{sweetness},{size} size,{ice_or_hot},{add_milk_or_not}. Is that right?'
+  - text: 'Please confirm your order: you ordered a {coffee_name}
+
+  Sweetness: {Sweetness}
+  
+  Size: {Size} 
+
+  State: {State}
+
+  Milkness: {Milkness}
+
+  Strength: {Strength}
+
+  Is that right?'
   utter_customer_info_submit:
   - text: OK. Everything is completed!
   utter_customer_info_values:
@@ -159,22 +186,33 @@ responses:
   - text: Your order has been placed. We will deliver it as soon as possible. Thanks!
   utter_customer_info:
   - text: Now I need your shipping information.
+  utter_ask_preference:
+  - text: Tell me your preference!
 actions:
 - action_coffee_list
 - action_confirm_coffee_name
 - action_reset_customer_info_form
 - action_reset_coffee_preference_form
+- action_set_coffee_name_by_preference
+- validate_coffee_name_form
+- validate_coffee_preference_form
+
 forms:
   coffee_preference_form:
     ignored_intents: []
     required_slots:
-    - sweetness
-    - size
-    - ice_or_hot
-    - add_milk_or_not
+    - Sweetness
+    - Strength
+    - State
+    - Milkness
+    - Size
   customer_info_form:
     ignored_intents: []
     required_slots:
     - email
     - address
     - customer_name
+  coffee_name_form:
+    ignored_intents: []
+    required_slots:
+    - coffee_name

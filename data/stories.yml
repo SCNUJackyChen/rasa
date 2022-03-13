@@ -2,33 +2,6 @@ version: "3.0"
 
 stories:
 
-- story: happy path
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
-
-- story: sad path 1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
-
 - story: intro
   steps:
   - intent: greet
@@ -37,56 +10,54 @@ stories:
 
 # order coffee
 
-- story: Activate coffee preference form, provide a list of coffee 📄
+- story: Activate coffee preference form 📄
   steps:
   - intent: order_coffee
   - action: utter_order_coffee
   - active_loop: null
-  - intent: ask_coffee_list
-  - action: action_coffee_list
-  - action: utter_ask_coffee_name
-  - intent: inform_coffee_name
-  - action: action_confirm_coffee_name
+  - intent: inform_select_preference # Cover 2 situations: 1. user ask for help by saying: "help me"; 2. multiple slots: "iced coffee with milk"
+  - action: utter_ask_preference
   - action: coffee_preference_form
   - active_loop: coffee_preference_form
   - slot_was_set:
-    - requested_slot: sweetness
+    - requested_slot: Sweetness
   - slot_was_set:
-    - requested_slot: size
+    - requested_slot: Strength
   - slot_was_set:
-    - requested_slot: ice_or_hot
+    - requested_slot: State
   - slot_was_set:
-    - requested_slot: add_milk_or_not
+    - requested_slot: Milkness
+  - slot_was_set:
+    - requested_slot: Size
   - active_loop: null
   - action: utter_coffee_pre_submit
+  - action: action_set_coffee_name_by_preference
   - action: utter_coffee_pre_values
 
   
-- story: Activate coffee preference form, user input a coffee name ☕
+- story: User input a coffee name ☕
   steps:
   - intent: order_coffee
   - action: utter_order_coffee
   - active_loop: null
   - intent: inform_coffee_name
+  - action: coffee_name_form
+  - active_loop: coffee_name_form
+  - active_loop: null
   - action: action_confirm_coffee_name
   - action: coffee_preference_form
   - active_loop: coffee_preference_form
   - slot_was_set:
-    - requested_slot: sweetness
-  - slot_was_set:
-    - requested_slot: size
-  - slot_was_set:
-    - requested_slot: ice_or_hot
-  - slot_was_set:
-    - requested_slot: add_milk_or_not
+    - requested_slot: Size
   - active_loop: null
   - action: utter_coffee_pre_submit
   - action: utter_coffee_pre_values  
 
 
+
+
 - story: ☕ coffee preference form finish, user agree 👍
   steps:
-  - action: utter_coffee_pre_submit
   - action: utter_coffee_pre_values
   - intent: affirm
   - action: utter_customer_info
@@ -104,27 +75,25 @@ stories:
 
 - story: ☕ coffee preference form finish, user deny ❌
   steps:
-  - action: utter_coffee_pre_submit
   - action: utter_coffee_pre_values
   - intent: deny
   - action: action_reset_coffee_preference_form
-  - active_loop: null
-  - action: action_coffee_list
-  - action: utter_ask_coffee_name
-  - intent: inform_coffee_name
-  - action: action_confirm_coffee_name
+  - action: utter_ask_preference
   - action: coffee_preference_form
   - active_loop: coffee_preference_form
   - slot_was_set:
-    - requested_slot: sweetness
+    - requested_slot: Sweetness
   - slot_was_set:
-    - requested_slot: size
+    - requested_slot: Strength
   - slot_was_set:
-    - requested_slot: ice_or_hot
+    - requested_slot: State
   - slot_was_set:
-    - requested_slot: add_milk_or_not
+    - requested_slot: Milkness
+  - slot_was_set:
+    - requested_slot: Size
   - active_loop: null
   - action: utter_coffee_pre_submit
+  - action: action_set_coffee_name_by_preference
   - action: utter_coffee_pre_values
 
 

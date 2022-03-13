@@ -96,32 +96,54 @@ nlu:
     - I want a cup of coffee
     - I want to order coffee
     - drink coffee
-- intent: inform_sweetness
+- intent: inform_Sweetness
   examples: |
-    - [sweet](sweetness) coffee
-    - [sweet](sweetness) one
-    - add [sugar](sweetness)
-    - [sugar](sweetness)
-    - [sugar](sweetness)
-- intent: inform_size
+    - [sweeter](Sweetness) coffee
+    - [sweeter](Sweetness) one
+    - add [sugar](Sweetness)
+    - [sugar](Sweetness)
+    - [less sweet](Sweetness)
+    - [half](Sweetness)
+    - [half sweet](Sweetness)
+    - [less sugar](Sweetness)
+    - [sweeter](Sweetness)
+- intent: inform_Size
   examples: |
-    - [big](size)
-    - [small](size)
-    - [medium](size)
-    - [big](size) cup
-    - a [big](size) one
-    - [small](size) cup
-    - a [small](size) one
-    - [medium](size) cup
-    - a [medium](size) one
-- intent: inform_ice_or_hot
+    - [big](Size)
+    - [small](Size)
+    - [medium](Size)
+    - [big](Size) cup
+    - a [big](Size) one
+    - [small](Size) cup
+    - a [small](Size) one
+    - [medium](Size) cup
+    - a [medium](Size) one
+- intent: inform_State
   examples: |
-    - [ice](ice_or_hot)
-    - [hot](ice_or_hot)
-- intent: inform_add_milk_or_not
+    - [ice](State)
+    - [warm](State)
+    - [lukewarm](State)
+- intent: inform_Milkness
   examples: |
-    - [milk](add_milk_or_not)
-    - [no milk](add_milk_or_not)
+    - [condensed milk](Milkness)
+    - [no milk](Milkness)
+    - [evaporated milk](Milkness)
+- intent: inform_Strength
+  examples: |
+    - [normal](Strength)
+    - [weak](Strength)
+    - [strong](Strength)
+    - [stronger](Strength)
+- intent: inform_select_preference
+  examples: |
+    - help me
+    - no idea
+    - don't know
+    - sure
+    - please help
+    - [iced](State) coffee 
+    - [warm](State) coffee with [sugar](Sweetness) 
+
 - intent: ask_coffee_list
   examples: |
     - What kind of coffee do you have?
@@ -137,6 +159,7 @@ nlu:
     - [Cappuccino](coffee_name)
     - [Americano](coffee_name)
     - [kopi O](coffee_name)
+
 - intent: inform_email
   examples: |
     - My email is [coffee@example.com](email)
@@ -153,27 +176,30 @@ nlu:
     - [Robert](customer_name)
     - The name is [Mary](customer_name)
     - [Jennifer](customer_name)
-- lookup: sweetness
+- lookup: Sweetness
   examples: |
     - sweet
     - sugar
     - less sugar
     - less sweet
     - half sweet
+    - no sugar
+    - half
 
 - regex: email
   examples: |
     - [a-zA-Z0-9._-]+@([a-zA-Z0-9.-]+\.)+[a-zA-Z]{2,4}
 
-- lookup: size
+- lookup: Size
   examples: |
     - big
     - medium
     - small
-- lookup: ice_or_hot
+- lookup: State
   examples: |
-    - ice
-    - hot
+    - iced
+    - warm
+    - lukewarm
 - lookup: add_milk_or_not
   examples: |
     - milk

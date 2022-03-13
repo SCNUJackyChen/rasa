@@ -1,53 +1,88 @@
-Your input ->  hi                                                                                                                
-Hey! How are you?
-Your input ->  drink coffee                                                                                                      
-What kind of coffee?
-Your input ->  kopi O                                                                                                            
-Your choice: kopi O
-Sweetness?
-Your input ->  sugar                                                                                                             
+
+###### Case 1 直接说出咖啡名 ###############
+Your input ->  hi                                                         
+Hi! Welcome to CoffeeFun! What can I help for you?
+Your input ->  I want a cup of coffee                                     
+What kind of coffee do you want? (If you don't know what you want, no worry, let me help you!)
+Your input ->  kopi o                                                     
 Which size?
-Your input ->  big                                                                                                               
-Ice or hot?
-Your input ->  ice                                                                                                               
-Add milk or no milk?
-Your input ->  milk                                                                                                              
+Your input ->  small                                                      
 OK. Thanks!
-Please confirm your order: you ordered a kopi O,sugar,big size,ice,milk. Is that right?
-Your input ->  no                                                                                                                
-Here are our coffee list: kopi O, kopi C, Espresso, Latte, Cappuccino, Americano
-Please select one coffee
-Your input ->  kopi C                                                                                                            
-Your choice: kopi C
-Sweetness?
-Your input ->  sugar                                                                                                             
-Which size?
-Your input ->  small                                                                                                             
-Ice or hot?
-Your input ->  hot                                                                                                               
-Add milk or no milk?
-Your input ->  no milk                                                                                                           
-OK. Thanks!
-Please confirm your order: you ordered a kopi C,sugar,small size,hot,no milk. Is that right?
-Your input ->  yes                                                                                                               
+Please confirm your order: you ordered a kopi o
+Sweetness: half
+Size: small
+State: warm
+Milkness: no milk
+Strength: normal
+Is that right?
+Your input ->  yes                                                        
 Now I need your shipping information.
 What is your email?
-Your input ->  chenziqi@u.nus.edu                                                                                                
+Your input ->  chenziqi@u.nus.edu                                         
 Please give me your address?
-Your input ->  120511                                                                                                            
+Your input ->  block 511                                                  
 What's your name?
-Your input ->  James                                                                                                             
+Your input ->  James                                                      
 OK. Everything is completed!
-Please confirm your delivery information: Your name is James. The delivery address is 120511. The email is chenziqi@u.nus.edu. Is that right?
-Your input ->  no                                                                                                                
-Now I need your shipping information.
-What is your email?
-Your input ->  jackyc@gmail.com                                                                                                  
-Please give me your address?
-Your input ->  120511                                                                                                            
-What's your name?
-Your input ->  Jacky                                                                                                             
-OK. Everything is completed!
-Please confirm your delivery information: Your name is Jacky. The delivery address is 120511. The email is jackyc@gmail.com. Is that right?
-Your input ->  yes                                                                                                               
+Please confirm your delivery information: Your name is James. The delivery address is 511. The email is chenziqi@u.nus.edu. Is that right?
+Your input ->  yes                                                        
 Your order has been placed. We will deliver it as soon as possible. Thanks!
+
+
+############# Case 2 一句话包含多个属性 ###################
+Your input ->  hi                                                         
+Hi! Welcome to CoffeeFun! What can I help for you?
+Your input ->  drink coffee                                               
+What kind of coffee? (If you don't know what you want, no worry, let me help you!)
+Your input ->  iced coffee with milk                                      
+Tell me your preference!
+Sweetness?
+Your input ->  sweeter                                                    
+What about the strength? Weak, normal, strong or stronger(no water)?      
+Your input ->  normal                                                     
+Condensed milk, evaporated milk or no milk?
+Your input ->  condensed milk                                             
+Which size?
+Your input ->  big                                                        
+OK. Thanks!
+Please confirm your order: you ordered a kopi gah dai peng
+Sweetness: sweeter
+Size: big
+State: iced
+Milkness: condensed milk
+Strength: normal
+Is that right?
+Your input ->  yes                                                        
+Now I need your shipping information.
+What is your email?
+Your input ->  
+
+######################## Case 3 没有说咖啡名也没有说属性 ######################
+Your input ->  hi                                                         
+Hi! Welcome to CoffeeFun! What can I help for you?
+Your input ->  drink coffee                                               
+What kind of coffee? (If you don't know what you want, no worry, let me help you!)
+Your input ->  help me                                 
+Tell me your preference!
+Sweetness?
+Your input ->  sweeter                                                    
+What about the strength? Weak, normal, strong or stronger(no water)?      
+Your input ->  normal           
+Iced, lukewarm or warm?
+Your input ->  iced                                  
+Condensed milk, evaporated milk or no milk?
+Your input ->  condensed milk                                             
+Which size?
+Your input ->  big                                                        
+OK. Thanks!
+Please confirm your order: you ordered a kopi gah dai peng
+Sweetness: sweeter
+Size: big
+State: iced
+Milkness: condensed milk
+Strength: normal
+Is that right?
+Your input ->  yes                                                        
+Now I need your shipping information.
+What is your email?
+Your input ->  
