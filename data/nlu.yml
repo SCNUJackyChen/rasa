@@ -109,11 +109,11 @@ nlu:
     - [sweeter](Sweetness)
 - intent: inform_Size
   examples: |
-    - [big](Size)
+    - [large](Size)
     - [small](Size)
     - [medium](Size)
-    - [big](Size) cup
-    - a [big](Size) one
+    - [large](Size) cup
+    - a [large](Size) one
     - [small](Size) cup
     - a [small](Size) one
     - [medium](Size) cup
@@ -139,7 +139,6 @@ nlu:
     - help me
     - no idea
     - don't know
-    - sure
     - please help
     - [iced](State) coffee 
     - [warm](State) coffee with [sugar](Sweetness) 
@@ -192,7 +191,7 @@ nlu:
 
 - lookup: Size
   examples: |
-    - big
+    - large
     - medium
     - small
 - lookup: State

@@ -1,0 +1,133 @@
+Name,Milkness,Strength,Sweetness,State
+Kopi,condensed milk,normal,half,warm
+Kopi O,no milk,normal,half,warm
+Kopi C,evaporated milk,normal,half,warm
+Kopi Po,condensed milk,weak,half,warm
+Kopi O Po,no milk,weak,half,warm
+Kopi C Po,evaporated milk,weak,half,warm
+Kopi Gau,condensed milk,strong,half,warm
+Kopi O Gau,no milk,strong,half,warm
+Kopi C Gau,evaporated milk,strong,half,warm
+Kopi Di Lo,condensed milk,stronger,half,warm
+Kopi O Di Lo,no milk,stronger,half,warm
+Kopi C Di Lo,evaporated milk,stronger,half,warm
+Kopi Siu Dai,condensed milk,normal,less sweet,warm
+Kopi O Siu Dai,no milk,normal,less sweet,warm
+Kopi C Siu Dai,evaporated milk,normal,less sweet,warm
+Kopi Po Siu Dai,condensed milk,weak,less sweet,warm
+Kopi O Po Siu Dai,no milk,weak,less sweet,warm
+Kopi C Po Siu Dai,evaporated milk,weak,less sweet,warm
+Kopi Gau Siu Dai,condensed milk,strong,less sweet,warm
+Kopi O Gau Siu Dai,no milk,strong,less sweet,warm
+Kopi C Gau Siu Dai,evaporated milk,strong,less sweet,warm
+Kopi Di Lo Siu Dai,condensed milk,stronger,less sweet,warm
+Kopi O Di Lo Siu Dai,no milk,stronger,less sweet,warm
+Kopi C Di Lo Siu Dai,evaporated milk,stronger,less sweet,warm
+Kopi O Kosong,no milk,normal,no sugar,warm
+Kopi C Kosong,evaporated milk,normal,no sugar,warm
+Kopi O Po Kosong,no milk,weak,no sugar,warm
+Kopi C Po Kosong,evaporated milk,weak,no sugar,warm
+Kopi O Gau Kosong,no milk,strong,no sugar,warm
+Kopi C Gau Kosong,evaporated milk,strong,no sugar,warm
+Kopi O Di Lo Kosong,no milk,stronger,no sugar,warm
+Kopi C Di Lo Kosong,evaporated milk,stronger,no sugar,warm
+Kopi Gah Dai,condensed milk,normal,sweeter,warm
+Kopi O Gah Dai,no milk,normal,sweeter,warm
+Kopi C Gah Dai,evaporated milk,normal,sweeter,warm
+Kopi Po Gah Dai,condensed milk,weak,sweeter,warm
+Kopi O Po Gah Dai,no milk,weak,sweeter,warm
+Kopi C Po Gah Dai,evaporated milk,weak,sweeter,warm
+Kopi Gau Gah Dai,condensed milk,strong,sweeter,warm
+Kopi O Gau Gah Dai,no milk,strong,sweeter,warm
+Kopi C Gau Gah Dai,evaporated milk,strong,sweeter,warm
+Kopi Di Lo Gah Dai,condensed milk,stronger,sweeter,warm
+Kopi O Di Lo Gah Dai,no milk,stronger,sweeter,warm
+Kopi C Di Lo Gah Dai,evaporated milk,stronger,sweeter,warm
+Kopi Pua Sio,condensed milk,normal,half,lukewarm
+Kopi O Pua Sio,no milk,normal,half,lukewarm
+Kopi C Pua Sio,evaporated milk,normal,half,lukewarm
+Kopi Po Pua Sio,condensed milk,weak,half,lukewarm
+Kopi O Po Pua Sio,no milk,weak,half,lukewarm
+Kopi C Po Pua Sio,evaporated milk,weak,half,lukewarm
+Kopi Gau Pua Sio,condensed milk,strong,half,lukewarm
+Kopi O Gau Pua Sio,no milk,strong,half,lukewarm
+Kopi C Gau Pua Sio,evaporated milk,strong,half,lukewarm
+Kopi Di Lo Pua Sio,condensed milk,stronger,half,lukewarm
+Kopi O Di Lo Pua Sio,no milk,stronger,half,lukewarm
+Kopi C Di Lo Pua Sio,evaporated milk,stronger,half,lukewarm
+Kopi Siu Dai Pua Sio,condensed milk,normal,less sweet,lukewarm
+Kopi O Siu Dai Pua Sio,no milk,normal,less sweet,lukewarm
+Kopi C Siu Dai Pua Sio,evaporated milk,normal,less sweet,lukewarm
+Kopi Po Siu Dai Pua Sio,condensed milk,weak,less sweet,lukewarm
+Kopi O Po Siu Dai Pua Sio,no milk,weak,less sweet,lukewarm
+Kopi C Po Siu Dai Pua Sio,evaporated milk,weak,less sweet,lukewarm
+Kopi Gau Siu Dai Pua Sio,condensed milk,strong,less sweet,lukewarm
+Kopi O Gau Siu Dai Pua Sio,no milk,strong,less sweet,lukewarm
+Kopi C Gau Siu Dai Pua Sio,evaporated milk,strong,less sweet,lukewarm
+Kopi Di Lo Siu Dai Pua Sio,condensed milk,stronger,less sweet,lukewarm
+Kopi O Di Lo Siu Dai Pua Sio,no milk,stronger,less sweet,lukewarm
+Kopi C Di Lo Siu Dai Pua Sio,evaporated milk,stronger,less sweet,lukewarm
+Kopi O Kosong Pua Sio,no milk,normal,no sugar,lukewarm
+Kopi C Kosong Pua Sio,evaporated milk,normal,no sugar,lukewarm
+Kopi O Po Kosong Pua Sio,no milk,weak,no sugar,lukewarm
+Kopi C Po Kosong Pua Sio,evaporated milk,weak,no sugar,lukewarm
+Kopi O Gau Kosong Pua Sio,no milk,strong,no sugar,lukewarm
+Kopi C Gau Kosong Pua Sio,evaporated milk,strong,no sugar,lukewarm
+Kopi O Di Lo Kosong Pua Sio,no milk,stronger,no sugar,lukewarm
+Kopi C Di Lo Kosong Pua Sio,evaporated milk,stronger,no sugar,lukewarm
+Kopi Gah Dai Pua Sio,condensed milk,normal,sweeter,lukewarm
+Kopi O Gah Dai Pua Sio,no milk,normal,sweeter,lukewarm
+Kopi C Gah Dai Pua Sio,evaporated milk,normal,sweeter,lukewarm
+Kopi Po Gah Dai Pua Sio,condensed milk,weak,sweeter,lukewarm
+Kopi O Po Gah Dai Pua Sio,no milk,weak,sweeter,lukewarm
+Kopi C Po Gah Dai Pua Sio,evaporated milk,weak,sweeter,lukewarm
+Kopi Gau Gah Dai Pua Sio,condensed milk,strong,sweeter,lukewarm
+Kopi O Gau Gah Dai Pua Sio,no milk,strong,sweeter,lukewarm
+Kopi C Gau Gah Dai Pua Sio,evaporated milk,strong,sweeter,lukewarm
+Kopi Di Lo Gah Dai Pua Sio,condensed milk,stronger,sweeter,lukewarm
+Kopi O Di Lo Gah Dai Pua Sio,no milk,stronger,sweeter,lukewarm
+Kopi C Di Lo Gah Dai Pua Sio,evaporated milk,stronger,sweeter,lukewarm
+Kopi Peng,condensed milk,normal,half,iced
+Kopi O Peng,no milk,normal,half,iced
+Kopi C Peng,evaporated milk,normal,half,iced
+Kopi Po Peng,condensed milk,weak,half,iced
+Kopi O Po Peng,no milk,weak,half,iced
+Kopi C Po Peng,evaporated milk,weak,half,iced
+Kopi Gau Peng,condensed milk,strong,half,iced
+Kopi O Gau Peng,no milk,strong,half,iced
+Kopi C Gau Peng,evaporated milk,strong,half,iced
+Kopi Di Lo Peng,condensed milk,stronger,half,iced
+Kopi O Di Lo Peng,no milk,stronger,half,iced
+Kopi C Di Lo Peng,evaporated milk,stronger,half,iced
+Kopi Siu Dai Peng,condensed milk,normal,less sweet,iced
+Kopi O Siu Dai Peng,no milk,normal,less sweet,iced
+Kopi C Siu Dai Peng,evaporated milk,normal,less sweet,iced
+Kopi Po Siu Dai Peng,condensed milk,weak,less sweet,iced
+Kopi O Po Siu Dai Peng,no milk,weak,less sweet,iced
+Kopi C Po Siu Dai Peng,evaporated milk,weak,less sweet,iced
+Kopi Gau Siu Dai Peng,condensed milk,strong,less sweet,iced
+Kopi O Gau Siu Dai Peng,no milk,strong,less sweet,iced
+Kopi C Gau Siu Dai Peng,evaporated milk,strong,less sweet,iced
+Kopi Di Lo Siu Dai Peng,condensed milk,stronger,less sweet,iced
+Kopi O Di Lo Siu Dai Peng,no milk,stronger,less sweet,iced
+Kopi C Di Lo Siu Dai Peng,evaporated milk,stronger,less sweet,iced
+Kopi O Kosong Peng,no milk,normal,no sugar,iced
+Kopi C Kosong Peng,evaporated milk,normal,no sugar,iced
+Kopi O Po Kosong Peng,no milk,weak,no sugar,iced
+Kopi C Po Kosong Peng,evaporated milk,weak,no sugar,iced
+Kopi O Gau Kosong Peng,no milk,strong,no sugar,iced
+Kopi C Gau Kosong Peng,evaporated milk,strong,no sugar,iced
+Kopi O Di Lo Kosong Peng,no milk,stronger,no sugar,iced
+Kopi C Di Lo Kosong Peng,evaporated milk,stronger,no sugar,iced
+Kopi Gah Dai Peng,condensed milk,normal,sweeter,iced
+Kopi O Gah Dai Peng,no milk,normal,sweeter,iced
+Kopi C Gah Dai Peng,evaporated milk,normal,sweeter,iced
+Kopi Po Gah Dai Peng,condensed milk,weak,sweeter,iced
+Kopi O Po Gah Dai Peng,no milk,weak,sweeter,iced
+Kopi C Po Gah Dai Peng,evaporated milk,weak,sweeter,iced
+Kopi Gau Gah Dai Peng,condensed milk,strong,sweeter,iced
+Kopi O Gau Gah Dai Peng,no milk,strong,sweeter,iced
+Kopi C Gau Gah Dai Peng,evaporated milk,strong,sweeter,iced
+Kopi Di Lo Gah Dai Peng,condensed milk,stronger,sweeter,iced
+Kopi O Di Lo Gah Dai Peng,no milk,stronger,sweeter,iced
+Kopi C Di Lo Gah Dai Peng,evaporated milk,stronger,sweeter,iced

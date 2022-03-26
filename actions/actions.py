@@ -15,9 +15,20 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet, AllSlotsReset
 from rasa_sdk.types import DomainDict
 
+import time
+import random
+
 path_to_db = "actions/kopi_list.xlsx"
 db = pd.read_excel(path_to_db)
 db["Name"] = db["Name"].str.lower()
+
+import mysql.connector
+cnx = mysql.connector.connect(user='root',
+                             password='123456',
+                             host='localhost',
+                             database='rasa',
+                             auth_plugin='mysql_native_password')
+cursor = cnx.cursor(buffered=True)
 
 class ValidateCoffeePreferenceForm(FormValidationAction):
     def name(self) -> Text:
@@ -105,7 +116,7 @@ class ValidateCoffeePreferenceForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         """Validate cuisine value."""
 
-        if slot_value.lower().strip() in ['big', 'medium', 'small']:
+        if slot_value.lower().strip() in ['large', 'medium', 'small']:
             # validation succeeded, set the value of the "cuisine" slot to value
             return {"Size": slot_value}
         else:
@@ -191,10 +202,34 @@ class ActionResetCustomerInfoForm(Action):
                 SlotSet("address", None), \
                 SlotSet("customer_name", None)]  
 
-class ActionSetCoffeeNameByPreference(Action):
+# class ActionSetCoffeeNameByPreference(Action):
+
+#     def name(self):
+#         return "action_set_coffee_name_by_preference"
+
+#     def run(self, dispatcher, tracker, domain):
+#         sweetness = tracker.get_slot('Sweetness')
+#         milkness = tracker.get_slot('Milkness')
+#         strength = tracker.get_slot('Strength')
+#         state = tracker.get_slot('State')
+
+#         coffee_name = db.loc[(db['Sweetness'] == sweetness) & \
+#                      (db['Milkness'] == milkness) & \
+#                      (db['Strength'] == strength) & \
+#                      (db['State'] == state) ]
+#         ret = []
+#         if (coffee_name.empty):
+#             res = "Sorry, no kopi match.."
+#             dispatcher.utter_message(text = res)
+#         else:
+#             ret = [SlotSet("coffee_name", str(coffee_name['Name'].values[0]))]
+        
+#         return ret
+
+class ActionSelectCoffeeNameByPreference(Action):
 
     def name(self):
-        return "action_set_coffee_name_by_preference"
+        return "action_select_coffee_name_by_preference"
 
     def run(self, dispatcher, tracker, domain):
         sweetness = tracker.get_slot('Sweetness')
@@ -202,18 +237,38 @@ class ActionSetCoffeeNameByPreference(Action):
         strength = tracker.get_slot('Strength')
         state = tracker.get_slot('State')
 
-        coffee_name = db.loc[(db['Sweetness'] == sweetness) & \
-                     (db['Milkness'] == milkness) & \
-                     (db['Strength'] == strength) & \
-                     (db['State'] == state) ]
+        cursor.execute('select Name from rasa.kopi_list where sweetness = %s and milkness = %s and strength = %s and state = %s limit 1;',[sweetness,milkness,strength,state])
+        record = cursor.fetchone()
+
+        res = ""
         ret = []
-        if (coffee_name.empty):
-            res = "Sorry, no kopi match.."
-            dispatcher.utter_message(text = res)
-        else:
-            ret = [SlotSet("coffee_name", str(coffee_name['Name'].values[0]))]
+        if record[0] is None:
+            res = "Sorry, there is no coffee to suit your taste" 
+        else:           
+            res = "According to your preference, we recommend you to order " + record[0]
+            ret = [SlotSet("coffee_name", record[0])]
         
+        dispatcher.utter_message(text = res)
         return ret
+
+class ActionSubmitOrder(Action):
+
+    def name(self):
+        return "action_submit_order"
+
+    def run(self, dispatcher, tracker, domain):
+        kopiname = tracker.get_slot('coffee_name')
+        size = tracker.get_slot('Size')
+        customername = tracker.get_slot('customer_name')
+        email = tracker.get_slot('email')
+        address = tracker.get_slot('address')
+        m = str(time.strftime("%Y%m%d%H%M%S", time.localtime()))
+        #m = str(random.randint(1,1000))
+
+        cursor.execute('insert into rasa.order(order_id,kopi_name,size,customer_name,email,address) values (%s,%s,%s,%s,%s,%s);',[m,kopiname,size,customername,email,address])
+        cnx.commit() 
+
+        return []
 
 if __name__ == "__main__" :
     

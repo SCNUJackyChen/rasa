@@ -31,7 +31,7 @@ stories:
     - requested_slot: Size
   - active_loop: null
   - action: utter_coffee_pre_submit
-  - action: action_set_coffee_name_by_preference
+  - action: action_select_coffee_name_by_preference
   - action: utter_coffee_pre_values
 
   
@@ -93,7 +93,7 @@ stories:
     - requested_slot: Size
   - active_loop: null
   - action: utter_coffee_pre_submit
-  - action: action_set_coffee_name_by_preference
+  - action: action_select_coffee_name_by_preference
   - action: utter_coffee_pre_values
 
 
@@ -104,6 +104,7 @@ stories:
   - action: utter_customer_info_values
   - intent: affirm
   - action: utter_completed
+  - action: action_submit_order
 
 - story: 👨 customer information form filling, user deny ❌
   steps:

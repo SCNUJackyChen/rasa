@@ -188,12 +188,16 @@ responses:
   - text: Now I need your shipping information.
   utter_ask_preference:
   - text: Tell me your preference!
+
+
 actions:
 - action_coffee_list
 - action_confirm_coffee_name
 - action_reset_customer_info_form
 - action_reset_coffee_preference_form
 - action_set_coffee_name_by_preference
+- action_select_coffee_name_by_preference
+- action_submit_order
 - validate_coffee_name_form
 - validate_coffee_preference_form
 
