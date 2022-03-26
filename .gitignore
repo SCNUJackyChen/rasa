@@ -1,3 +1,4 @@
 .rasa/cache
 .rasa/*
 models/*
+mysql

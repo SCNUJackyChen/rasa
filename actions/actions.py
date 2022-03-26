@@ -16,7 +16,6 @@ from rasa_sdk.events import SlotSet, AllSlotsReset
 from rasa_sdk.types import DomainDict
 
 import time
-import random
 
 path_to_db = "actions/kopi_list.xlsx"
 db = pd.read_excel(path_to_db)
@@ -25,7 +24,7 @@ db["Name"] = db["Name"].str.lower()
 import mysql.connector
 cnx = mysql.connector.connect(user='root',
                              password='123456',
-                             host='localhost',
+                             host='db',
                              database='rasa',
                              auth_plugin='mysql_native_password')
 cursor = cnx.cursor(buffered=True)

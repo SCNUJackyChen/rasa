@@ -1,16 +1,19 @@
 FROM python:3.7-slim
 
 RUN python -m pip install rasa
+RUN python -m pip install pandas
+RUN python -m pip install mysql-connector
+RUN python -m pip install openpyxl
 
 WORKDIR /app
 COPY . .
 
-RUN rasa train nlu
+RUN rasa train
 
-USER 1001
+USER root
 
-ENTRYPOINT ["rasa"]
+# ENTRYPOINT ["rasa"]
 
-CMD ["run", "actions"]
+# CMD ["run", "--enable-api", "--cors", "*"]
 
-CMD ["run", "--enable-api", "--cors", "\"*\""]
+CMD ["sh",  "run.sh"]
