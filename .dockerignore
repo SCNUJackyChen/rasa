@@ -1,0 +1,5 @@
+tests/*
+models/*
+venv
+.rasa/*
+**/*.md
