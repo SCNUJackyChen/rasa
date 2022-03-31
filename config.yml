@@ -4,13 +4,18 @@ recipe: default.v1
 
 # Configuration for Rasa NLU.
 # https://rasa.com/docs/rasa/nlu/components/
-language: en
+language: "en"
 
 pipeline:
 # # No configuration for the NLU pipeline was provided. The following default pipeline was used to train your model.
 # # If you'd like to customize it, uncomment and adjust the pipeline.
 # # See https://rasa.com/docs/rasa/tuning-your-model for more information.
-  - name: WhitespaceTokenizer
+  # - name: WhitespaceTokenizer
+  - name: SpacyNLP
+    model: en_core_web_md # Install the language package first: python -m spacy download en_core_web_md
+  - name: SpacyTokenizer
+  - name: emotional_analysis.ea.SentimentAnalyzer
+  - name: SpacyFeaturizer
   - name: RegexEntityExtractor
     use_regexes: True
   - name: LexicalSyntacticFeaturizer
