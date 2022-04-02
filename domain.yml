@@ -22,6 +22,7 @@ intents:
 - inform_address
 - inform_customer_name
 - inform_select_preference
+- feedback
 entities:
 - State
 - address
@@ -32,6 +33,8 @@ entities:
 - Size
 - Sweetness
 - Strength
+- kopi_name
+- sentiments_score
 slots:
   Sweetness:
     type: text
@@ -121,11 +124,27 @@ slots:
       type: from_entity
     - type: from_entity
       entity: coffee_name
+  kopi_name:
+    type: text
+    influence_conversation: false
+    mappings:
+    - entity: kopi_name
+      type: from_entity
+    - type: from_entity
+      entity: kopi_name
   coffee_name_is_collected:
     type: bool
     influence_conversation: true
     mappings:
     - type: custom
+  sentiments_score:
+    type: text
+    influence_conversation: false
+    mappings:
+    - entity: sentiments_score
+      type: from_entity
+    - type: from_entity
+      entity: sentiments_score
 responses:
   utter_greet:
   - text: Hi! Welcome to CoffeeFun! What can I help for you?
@@ -158,12 +177,19 @@ responses:
   - text: What kind of coffee do you want?
   utter_ask_customer_info_form_email:
   - text: What is your email?
+  utter_ask_feedback:
+  - text: Do you have any comments or suggestions for us?
   utter_ask_customer_info_form_address:
   - text: Please give me your address?
   utter_ask_customer_info_form_customer_name:
   - text: What's your name?
+  utter_ask_feedback_collection_form_kopi_name:
+  - text: May I ask which kind of coffee you comment on?
+  - text: Could you tell us the coffee name?
   utter_coffee_pre_submit:
   - text: OK. Thanks!
+  utter_please_rephrase:
+  - text: I'm sorry, I didn't quite understand that. Could you rephrase?
   utter_coffee_pre_values:
   - text: 'Please confirm your order: you ordered a {coffee_name}
 
@@ -188,7 +214,8 @@ responses:
   - text: Now I need your shipping information.
   utter_ask_preference:
   - text: Tell me your preference!
-
+  utter_feedback_received:
+  - text: Your feedback is well received! Thank you!
 
 actions:
 - action_coffee_list
@@ -200,6 +227,9 @@ actions:
 - action_submit_order
 - validate_coffee_name_form
 - validate_coffee_preference_form
+- action_feedback_collection_form
+- action_get_sentiments_score
+- action_submit_user_feedback
 
 forms:
   coffee_preference_form:
@@ -220,3 +250,7 @@ forms:
     ignored_intents: []
     required_slots:
     - coffee_name
+  feedback_collection_form:
+    ignored_intents: []
+    required_slots:
+    - kopi_name

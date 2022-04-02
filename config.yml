@@ -10,12 +10,11 @@ pipeline:
 # # No configuration for the NLU pipeline was provided. The following default pipeline was used to train your model.
 # # If you'd like to customize it, uncomment and adjust the pipeline.
 # # See https://rasa.com/docs/rasa/tuning-your-model for more information.
-  # - name: WhitespaceTokenizer
-  - name: SpacyNLP
-    model: en_core_web_md # Install the language package first: python -m spacy download en_core_web_md
-  - name: SpacyTokenizer
-  - name: emotional_analysis.ea.SentimentAnalyzer
-  - name: SpacyFeaturizer
+  - name: WhitespaceTokenizer
+  # - name: SpacyNLP
+  #   model: en_core_web_md # Install the language package first: python -m spacy download en_core_web_md
+  # - name: SpacyTokenizer
+  # - name: SpacyFeaturizer
   - name: RegexEntityExtractor
     use_regexes: True
   - name: LexicalSyntacticFeaturizer
@@ -27,6 +26,7 @@ pipeline:
   - name: DIETClassifier
     epochs: 100
     constrain_similarities: true
+  - name: emotional_analysis.ea.SentimentAnalyzer
   - name: EntitySynonymMapper
   - name: ResponseSelector
     epochs: 100

@@ -1,3 +1,4 @@
+from enum import IntEnum
 from typing import Dict, Optional, Text, Any, List
 
 from rasa.engine.graph import GraphComponent, ExecutionContext
@@ -16,6 +17,7 @@ import os
 
 from rasa.shared.nlu.constants import (
     TEXT,
+    INTENT,
     TEXT_TOKENS,
     FEATURE_TYPE_SENTENCE,
     FEATURE_TYPE_SEQUENCE,
@@ -107,13 +109,13 @@ class SentimentAnalyzer(GraphComponent):
         """Retrieve the tokens of the new message, pass it to the classifier
             and append prediction results to the message class."""
         message = messages[0]
-
+        
         sid = SentimentIntensityAnalyzer()
         res = sid.polarity_scores(message.get(TEXT))
         key, value = max(res.items(), key=lambda x: x[1])
         entity = self.convert_to_rasa(key, value)
 
-        message.set("entities", [entity], add_to_output=True)        
+        message.set("sentiments", [entity], add_to_output=True)        
 
         return [message]
         # if not self.clf:

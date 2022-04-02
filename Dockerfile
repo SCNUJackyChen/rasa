@@ -5,8 +5,7 @@ RUN python -m pip install pandas
 RUN python -m pip install mysql-connector
 RUN python -m pip install openpyxl
 RUN python -m pip install nltk
-RUN python -m pip install spacy
-RUN python -m spacy download en_core_web_md
+RUN python -m pip install fuzzywuzzy
 
 WORKDIR /app
 COPY . .

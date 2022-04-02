@@ -9,6 +9,10 @@
 
 from typing import Any, Text, Dict, List
 import pandas as pd
+import sys
+sys.path.append(".")
+
+from spell_checker.spellcheck import SpellCheck
 
 from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
@@ -20,11 +24,12 @@ import time
 path_to_db = "actions/kopi_list.xlsx"
 db = pd.read_excel(path_to_db)
 db["Name"] = db["Name"].str.lower()
+spell_check = SpellCheck(db["Name"])
 
 import mysql.connector
 cnx = mysql.connector.connect(user='root',
                              password='123456',
-                             host='db',
+                             host='localhost', # db for docker
                              database='rasa',
                              auth_plugin='mysql_native_password')
 cursor = cnx.cursor(buffered=True)
@@ -135,17 +140,19 @@ class ValidateCoffeeNameForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict,
     ) -> Dict[Text, Any]:
-        """Validate cuisine value."""
         
         coffee_list = list(db["Name"].values)
-
+        
         if slot_value.lower().strip() in coffee_list:
             # validation succeeded, set the value of the "cuisine" slot to value
-            return {"coffee_name": slot_value}
+            return {"coffee_name": slot_value.lower().strip()}
         else:
             # validation failed, set this slot to None so that the
             # user will be asked for the slot again
             dispatcher.utter_message(text=f"I cannot find this coffee. I'm assuming you mis-spelled.")
+            spell_check.check(slot_value.lower().strip())
+            hint = spell_check.correct()
+            dispatcher.utter_message(text=f"Do you mean " + hint + "? Please input again.")
             return {"coffee_name": None}
 
 class ActionConfirmCoffeeName(Action):
@@ -162,8 +169,7 @@ class ActionConfirmCoffeeName(Action):
         res = ""
         ret = []
         target = db.loc[db['Name'] == coffee_name]
-        if not target.empty:
-            
+        if not target.empty:  # target must not be empty
             sweetness = target["Sweetness"].values[0]
             milkness = target["Milkness"].values[0]
             strength = target["Strength"].values[0]
@@ -269,6 +275,36 @@ class ActionSubmitOrder(Action):
 
         return []
 
+class ActionGetSentimentsScore(Action):
+
+    def name(self):
+        return "action_get_sentiments_score"
+    
+    def run(self, dispatcher, tracker, domain):
+        score = tracker.current_state()["latest_message"]["sentiments"][0]["value"]
+        ret = [SlotSet("sentiments_score", score)]
+        return ret
+
+
+class ActionSubmitUserFeedback(Action):
+
+    def name(self):
+        return "action_submit_user_feedback"
+    
+    def run(self, dispatcher, tracker, domain):
+        score = tracker.get_slot('sentiments_score')
+        kopi_name = tracker.get_slot('kopi_name')
+
+        m = str(time.strftime("%Y%m%d%H%M%S", time.localtime()))
+
+        cursor.execute('insert into rasa.feedback(idfeedback,kopi_name,rating) values (%s,%s,%s);',[m,kopi_name,score])
+        cnx.commit() 
+
+        return []
+
+
+
+
 if __name__ == "__main__" :
     
     # path_to_db = "actions/kopi_list.xlsx"
@@ -283,9 +319,23 @@ if __name__ == "__main__" :
     #                  (db['State'] == state) ]
     # print(coffee_name["Name"].values[0])
 
-    coffee = "kopi O"
-    db["Name"] = db["Name"].str.lower()
-    coffee_list = list(db["Name"].values)
-    print(coffee_list[0:5])
-    print(coffee.lower().strip() in coffee_list)
+    # coffee = "kopi O"
+    # db["Name"] = db["Name"].str.lower()
+    # coffee_list = list(db["Name"].values)
+    # print(coffee_list[0:5])
+    # print(coffee.lower().strip() in coffee_list)
+
+    # with open("temp.txt", 'w') as f:
+    #     for name in db["Name"]:
+    #         print('- [' + name + '](coffee_name)', file=f)
     
+
+
+
+    # set the string
+    string_to_be_checked = "kopi o pang"
+    spell_check.check(string_to_be_checked.lower().strip())
+
+    # print suggestions and correction
+    print (spell_check.suggestions())
+    print (spell_check.correct())
