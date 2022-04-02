@@ -100,10 +100,10 @@ nlu:
 
 - intent: inform_feedback
   examples: |
-    - [kopi O](kopi_name) is too bad!
-    - I don't like [kopi O](kopi_name)
-    - lovely taste [kopi C](kopi_name)
-    - I love [kopi](kopi_name)
+    - [kopi O](coffee_name) is too bad!
+    - I don't like [kopi O](coffee_name)
+    - lovely taste [kopi C](coffee_name)
+    - I love [kopi](coffee_name)
 
 
 - intent: order_coffee
@@ -113,14 +113,9 @@ nlu:
     - drink coffee
 - intent: inform_Sweetness
   examples: |
-    - [sweeter](Sweetness) coffee
-    - [sweeter](Sweetness) one
-    - add [sugar](Sweetness)
-    - [sugar](Sweetness)
-    - [less sweet](Sweetness)
     - [half](Sweetness)
-    - [half sweet](Sweetness)
-    - [less sugar](Sweetness)
+    - [no sugar](Sweetness)
+    - [less sweet](Sweetness)
     - [sweeter](Sweetness)
 - intent: inform_Size
   examples: |
@@ -135,7 +130,7 @@ nlu:
     - a [medium](Size) one
 - intent: inform_State
   examples: |
-    - [ice](State)
+    - [iced](State)
     - [warm](State)
     - [lukewarm](State)
 - intent: inform_Milkness

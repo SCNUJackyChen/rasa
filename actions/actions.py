@@ -21,6 +21,12 @@ from rasa_sdk.types import DomainDict
 
 import time
 
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
+
+tokenizer = AutoTokenizer.from_pretrained("yangheng/deberta-v3-base-absa-v1.1")
+model = AutoModelForSequenceClassification.from_pretrained("yangheng/deberta-v3-base-absa-v1.1")
+LABELS = ["neg", "neu", "pos"]
+
 path_to_db = "actions/kopi_list.xlsx"
 db = pd.read_excel(path_to_db)
 db["Name"] = db["Name"].str.lower()
@@ -281,8 +287,18 @@ class ActionGetSentimentsScore(Action):
         return "action_get_sentiments_score"
     
     def run(self, dispatcher, tracker, domain):
-        score = tracker.current_state()["latest_message"]["sentiments"][0]["value"]
-        ret = [SlotSet("sentiments_score", score)]
+        text = tracker.current_state()["latest_message"]["text"]
+        aspects = tracker.current_state()["latest_message"]["entities"]
+        res = []
+        for aspect in aspects:
+            value = aspect["value"]
+            query = tokenizer("[CLS] " + text + " [SEP] " + value + " [SEP]", return_tensors="pt")
+            outputs = model(**query)
+            outputs_list = outputs.get("logits").detach().numpy().tolist()[0]
+            prediction = LABELS[outputs_list.index(max(outputs_list))]
+            res.append([value, prediction])
+        
+        ret = [SlotSet("ABSA_result", res)]
         return ret
 
 
@@ -292,13 +308,14 @@ class ActionSubmitUserFeedback(Action):
         return "action_submit_user_feedback"
     
     def run(self, dispatcher, tracker, domain):
-        score = tracker.get_slot('sentiments_score')
-        kopi_name = tracker.get_slot('kopi_name')
+        res = tracker.get_slot('ABSA_result')
 
         m = str(time.strftime("%Y%m%d%H%M%S", time.localtime()))
 
-        cursor.execute('insert into rasa.feedback(idfeedback,kopi_name,rating) values (%s,%s,%s);',[m,kopi_name,score])
-        cnx.commit() 
+        for i, p in enumerate(res):
+            aspect, review = p
+            cursor.execute('insert into rasa.feedback(idfeedback,aspect,review) values (%s,%s,%s);',[m + str(i), aspect, review])
+            cnx.commit() 
 
         return []
 

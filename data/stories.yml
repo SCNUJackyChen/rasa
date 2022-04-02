@@ -137,7 +137,5 @@ stories:
   - action: utter_ask_feedback
   - intent: inform_feedback
   - action: action_get_sentiments_score
-  - active_loop: feedback_collection_form
-  - active_loop: null
   - action: action_submit_user_feedback
   - action: utter_feedback_received

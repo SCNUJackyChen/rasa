@@ -15,6 +15,7 @@ nltk.download('vader_lexicon')
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import os
 
+
 from rasa.shared.nlu.constants import (
     TEXT,
     INTENT,

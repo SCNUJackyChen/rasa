@@ -33,8 +33,7 @@ entities:
 - Size
 - Sweetness
 - Strength
-- kopi_name
-- sentiments_score
+- ABSA_result
 slots:
   Sweetness:
     type: text
@@ -124,27 +123,18 @@ slots:
       type: from_entity
     - type: from_entity
       entity: coffee_name
-  kopi_name:
-    type: text
-    influence_conversation: false
-    mappings:
-    - entity: kopi_name
-      type: from_entity
-    - type: from_entity
-      entity: kopi_name
+
   coffee_name_is_collected:
     type: bool
     influence_conversation: true
     mappings:
     - type: custom
-  sentiments_score:
-    type: text
+  ABSA_result:
+    type: list
     influence_conversation: false
     mappings:
-    - entity: sentiments_score
-      type: from_entity
     - type: from_entity
-      entity: sentiments_score
+      entity: ABSA_result
 responses:
   utter_greet:
   - text: Hi! Welcome to CoffeeFun! What can I help for you?
@@ -163,9 +153,9 @@ responses:
   - text: What kind of coffee do you want? (If you don't know what you want, no worry, let me help you!)
   - text: What kind of coffee? (If you don't know what you want, no worry, let me help you!)
   utter_ask_coffee_preference_form_Sweetness:
-  - text: Sweetness?
+  - text: Sweetness? (no sugar, less sweet, half, sweeter)
   utter_ask_coffee_preference_form_Size:
-  - text: Which size?
+  - text: Which size? (large, medium, small)
   utter_ask_coffee_preference_form_State:
   - text: Iced, lukewarm or warm?
   utter_ask_coffee_preference_form_Milkness:
@@ -183,9 +173,6 @@ responses:
   - text: Please give me your address?
   utter_ask_customer_info_form_customer_name:
   - text: What's your name?
-  utter_ask_feedback_collection_form_kopi_name:
-  - text: May I ask which kind of coffee you comment on?
-  - text: Could you tell us the coffee name?
   utter_coffee_pre_submit:
   - text: OK. Thanks!
   utter_please_rephrase:
@@ -250,7 +237,3 @@ forms:
     ignored_intents: []
     required_slots:
     - coffee_name
-  feedback_collection_form:
-    ignored_intents: []
-    required_slots:
-    - kopi_name
