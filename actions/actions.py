@@ -12,16 +12,16 @@ from rasa_sdk.types import DomainDict
 import rasa.constants
 import time
 
-# from transformers import AutoTokenizer, AutoModelForSequenceClassification
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
-# tokenizer = AutoTokenizer.from_pretrained("yangheng/deberta-v3-base-absa-v1.1")
-# model = AutoModelForSequenceClassification.from_pretrained("yangheng/deberta-v3-base-absa-v1.1")
-# LABELS = ["neg", "neu", "pos"]
+tokenizer = AutoTokenizer.from_pretrained("yangheng/deberta-v3-base-absa-v1.1")
+model = AutoModelForSequenceClassification.from_pretrained("yangheng/deberta-v3-base-absa-v1.1")
+LABELS = ["neg", "neu", "pos"]
 
-# from mrc.qa_predict import load, predict
-# import re
-# pipeline = load()
-# pattern = re.compile("<Answer: answer='(.*?)', score")
+from mrc.qa_predict import load, predict
+import re
+pipeline = load()
+pattern = re.compile("<Answer: answer='(.*?)', score")
 
 path_to_db = "actions/kopi_list.xlsx"
 db = pd.read_excel(path_to_db)

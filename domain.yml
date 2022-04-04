@@ -127,6 +127,7 @@ slots:
       type: from_entity
     - type: from_entity
       entity: coffee_name
+
   coffee_name_is_collected:
     type: bool
     influence_conversation: true
