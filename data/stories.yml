@@ -6,6 +6,7 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
+  - active_loop: null
 
 
 # order coffee
@@ -78,23 +79,26 @@ stories:
   - action: utter_coffee_pre_values
   - intent: deny
   - action: action_reset_coffee_preference_form
-  - action: utter_ask_preference
-  - action: coffee_preference_form
-  - active_loop: coffee_preference_form
-  - slot_was_set:
-    - requested_slot: Sweetness
-  - slot_was_set:
-    - requested_slot: Strength
-  - slot_was_set:
-    - requested_slot: State
-  - slot_was_set:
-    - requested_slot: Milkness
-  - slot_was_set:
-    - requested_slot: Size
+  - action: utter_order_coffee
   - active_loop: null
-  - action: utter_coffee_pre_submit
-  - action: action_select_coffee_name_by_preference
-  - action: utter_coffee_pre_values
+  
+  # - action: utter_ask_preference
+  # - action: coffee_preference_form
+  # - active_loop: coffee_preference_form
+  # - slot_was_set:
+  #   - requested_slot: Sweetness
+  # - slot_was_set:
+  #   - requested_slot: Strength
+  # - slot_was_set:
+  #   - requested_slot: State
+  # - slot_was_set:
+  #   - requested_slot: Milkness
+  # - slot_was_set:
+  #   - requested_slot: Size
+  # - active_loop: null
+  # - action: utter_coffee_pre_submit
+  # - action: action_select_coffee_name_by_preference
+  # - action: utter_coffee_pre_values
 
 
 
@@ -127,36 +131,40 @@ stories:
   - action: utter_customer_info_values 
 
 
+- story: customer feedback
+  steps:
+  - intent: feedback
+  - action: utter_ask_feedback
+  - intent: inform_feedback
+  - action: action_get_sentiments_score
+  - action: action_submit_user_feedback
+  - action: utter_feedback_received
 
 
+- story: Chitchat + order
+  steps:
+  - intent: chitchat_trigger
+  - action: utter_ask_me_coffee_question
+  - action: action_reset_is_end
+  - action: chitchat_form
+  - active_loop: chitchat_form
+  - slot_was_set:
+    - requested_slot: is_end
+  - active_loop: null
+  - intent: greet
+  - action: utter_greet
+  - active_loop: null
 
 
-
-# - story: order coffee
-#   steps:
-#   - intent: order_coffee
-#   - action: utter_order_coffee
-#   # - intent: ask_coffee_list # optional
-#   # - action: return_coffee_list # py
-
-#   # - intent: answer_coffee_name 
-#   # - action: check_coffee_name # py
-#   - action: coffee_preference_form
-#   - active_loop: coffee_preference_form
-#   # - action: return_coffee_info 
-  # - intent: confirm_coffee_info
-  # - active_loop: customer_info_form
-  # - action: return_customer_info
-  # - intent: confirm_customer_info
-  # - action: submit_order # py
-
-# 1. slot的内容如何识别
-# 2. or逻辑如何实现
-# 3. action 的 python 逻辑
-# 4. coffee的种类和属性
-# 5. rules 和 stories 的区别
-
-  
-  
-
-
+- story: Chitchat + feedback
+  steps:
+  - intent: chitchat_trigger
+  - action: utter_ask_me_coffee_question
+  - action: action_reset_is_end
+  - action: chitchat_form
+  - active_loop: chitchat_form
+  - slot_was_set:
+    - requested_slot: is_end
+  - active_loop: null
+  - intent: feedback
+  - action: utter_ask_feedback

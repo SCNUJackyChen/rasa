@@ -12,6 +12,13 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
+- rule: Ask the user to rephrase whenever they send a message with low NLU confidence
+  steps:
+  - intent: nlu_fallbacks
+  - action: utter_please_rephrase
+
+
+
 
 # - rule: Submit order status form, coffee name collected
 #   condition:

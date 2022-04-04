@@ -22,6 +22,10 @@ intents:
 - inform_address
 - inform_customer_name
 - inform_select_preference
+- inform_feedback
+- feedback
+- chitchat_trigger
+- nlu_fallbacks
 entities:
 - State
 - address
@@ -32,6 +36,8 @@ entities:
 - Size
 - Sweetness
 - Strength
+- environment
+- service
 slots:
   Sweetness:
     type: text
@@ -126,6 +132,34 @@ slots:
     influence_conversation: true
     mappings:
     - type: custom
+  ABSA_result:
+    type: list
+    influence_conversation: false
+    mappings:
+    - type: custom
+  is_end:
+    type: bool
+    influence_conversation: false
+    mappings:
+    - type: custom
+  environment:
+    type: text
+    influence_conversation: false
+    mappings:
+      - entity: environment
+        type: from_entity
+      - type: from_entity
+        entity: environment
+  service:
+    type: text
+    influence_conversation: false
+    mappings:
+    - entity: service
+      type: from_entity
+    - type: from_entity
+      entity: service
+  
+
 responses:
   utter_greet:
   - text: Hi! Welcome to CoffeeFun! What can I help for you?
@@ -144,9 +178,9 @@ responses:
   - text: What kind of coffee do you want? (If you don't know what you want, no worry, let me help you!)
   - text: What kind of coffee? (If you don't know what you want, no worry, let me help you!)
   utter_ask_coffee_preference_form_Sweetness:
-  - text: Sweetness?
+  - text: Sweetness? (no sugar, less sweet, half, sweeter)
   utter_ask_coffee_preference_form_Size:
-  - text: Which size?
+  - text: Which size? (large, medium, small)
   utter_ask_coffee_preference_form_State:
   - text: Iced, lukewarm or warm?
   utter_ask_coffee_preference_form_Milkness:
@@ -158,12 +192,18 @@ responses:
   - text: What kind of coffee do you want?
   utter_ask_customer_info_form_email:
   - text: What is your email?
+  utter_ask_feedback:
+  - text: Do you have any comments or suggestions for us?
   utter_ask_customer_info_form_address:
   - text: Please give me your address?
   utter_ask_customer_info_form_customer_name:
   - text: What's your name?
+  utter_ask_me_coffee_question:
+  - text: Ask me anything about coffee!
   utter_coffee_pre_submit:
   - text: OK. Thanks!
+  utter_please_rephrase:
+  - text: I'm sorry, I didn't quite understand that. Could you rephrase?
   utter_coffee_pre_values:
   - text: 'Please confirm your order: you ordered a {coffee_name}
 
@@ -188,7 +228,8 @@ responses:
   - text: Now I need your shipping information.
   utter_ask_preference:
   - text: Tell me your preference!
-
+  utter_feedback_received:
+  - text: Your feedback is well received! Thank you!
 
 actions:
 - action_coffee_list
@@ -200,7 +241,11 @@ actions:
 - action_submit_order
 - validate_coffee_name_form
 - validate_coffee_preference_form
-
+- action_feedback_collection_form
+- action_get_sentiments_score
+- action_submit_user_feedback
+- validate_chitchat_form
+- action_reset_is_end
 forms:
   coffee_preference_form:
     ignored_intents: []
@@ -220,3 +265,7 @@ forms:
     ignored_intents: []
     required_slots:
     - coffee_name
+  chitchat_form:
+    ignored_intents: []
+    required_slots:
+    - is_end

@@ -2,3 +2,5 @@
 .rasa/*
 models/*
 mysql
+mlruns
+mrc/my_model

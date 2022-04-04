@@ -83,7 +83,7 @@ nlu:
     - not good
     - not very good
     - extremly sad
-    - so saad
+    - so sads
     - so sad
 - intent: bot_challenge
   examples: |
@@ -91,6 +91,33 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+
+- intent: feedback
+  examples: |
+    - feedback
+    - give some feedbacks
+    - give some advice
+
+- intent: inform_feedback
+  examples: |
+    - [kopi O](coffee_name) is too bad!
+    - I don't like [kopi O](coffee_name)
+    - lovely taste [kopi C](coffee_name)
+    - I love [kopi](coffee_name)
+    - [kopi](coffee_name) is a little bit expensive
+    - [kopi](coffee_name) is awesome
+    - [kopi](coffee_name) is amazing
+    - The [hygiene situation](environment) in the store is terrible
+    - The [facilities](environment) are too old
+    - The [service](service) is very poor
+    - The [clerk](service) couldn't respond to my needs in time
+    - [Customer service](service) is good
+
+- intent: chitchat_trigger
+  examples: |
+    - chitchat
+    - go chitchat
+
 - intent: order_coffee
   examples: |
     - I want a cup of coffee
@@ -98,14 +125,9 @@ nlu:
     - drink coffee
 - intent: inform_Sweetness
   examples: |
-    - [sweeter](Sweetness) coffee
-    - [sweeter](Sweetness) one
-    - add [sugar](Sweetness)
-    - [sugar](Sweetness)
-    - [less sweet](Sweetness)
     - [half](Sweetness)
-    - [half sweet](Sweetness)
-    - [less sugar](Sweetness)
+    - [no sugar](Sweetness)
+    - [less sweet](Sweetness)
     - [sweeter](Sweetness)
 - intent: inform_Size
   examples: |
@@ -120,7 +142,7 @@ nlu:
     - a [medium](Size) one
 - intent: inform_State
   examples: |
-    - [ice](State)
+    - [iced](State)
     - [warm](State)
     - [lukewarm](State)
 - intent: inform_Milkness
@@ -140,15 +162,13 @@ nlu:
     - no idea
     - don't know
     - please help
+    - any recommendation?
+    - recommendation?
+    - do you have any recommendation?
+    - any choice?
     - [iced](State) coffee 
     - [warm](State) coffee with [sugar](Sweetness) 
 
-- intent: ask_coffee_list
-  examples: |
-    - What kind of coffee do you have?
-    - Could you give me a coffee list?
-    - Any choice?
-    - any choice?
 - intent: inform_coffee_name
   examples: |
     - [kopi O](coffee_name)
@@ -158,6 +178,139 @@ nlu:
     - [Cappuccino](coffee_name)
     - [Americano](coffee_name)
     - [kopi O](coffee_name)
+    - [kopi](coffee_name)
+    - [kopi o](coffee_name)
+    - [kopi c](coffee_name)
+    - [kopi po](coffee_name)
+    - [kopi o po](coffee_name)
+    - [kopi c po](coffee_name)
+    - [kopi gau](coffee_name)
+    - [kopi o gau](coffee_name)
+    - [kopi c gau](coffee_name)
+    - [kopi di lo](coffee_name)
+    - [kopi o di lo](coffee_name)
+    - [kopi c di lo](coffee_name)
+    - [kopi siu dai](coffee_name)
+    - [kopi o siu dai](coffee_name)
+    - [kopi c siu dai](coffee_name)
+    - [kopi po siu dai](coffee_name)
+    - [kopi o po siu dai](coffee_name)
+    - [kopi c po siu dai](coffee_name)
+    - [kopi gau siu dai](coffee_name)
+    - [kopi o gau siu dai](coffee_name)
+    - [kopi c gau siu dai](coffee_name)
+    - [kopi di lo siu dai](coffee_name)
+    - [kopi o di lo siu dai](coffee_name)
+    - [kopi c di lo siu dai](coffee_name)
+    - [kopi o kosong](coffee_name)
+    - [kopi c kosong](coffee_name)
+    - [kopi o po kosong](coffee_name)
+    - [kopi c po kosong](coffee_name)
+    - [kopi o gau kosong](coffee_name)
+    - [kopi c gau kosong](coffee_name)
+    - [kopi o di lo kosong](coffee_name)
+    - [kopi c di lo kosong](coffee_name)
+    - [kopi gah dai](coffee_name)
+    - [kopi o gah dai](coffee_name)
+    - [kopi c gah dai](coffee_name)
+    - [kopi po gah dai](coffee_name)
+    - [kopi o po gah dai](coffee_name)
+    - [kopi c po gah dai](coffee_name)
+    - [kopi gau gah dai](coffee_name)
+    - [kopi o gau gah dai](coffee_name)
+    - [kopi c gau gah dai](coffee_name)
+    - [kopi di lo gah dai](coffee_name)
+    - [kopi o di lo gah dai](coffee_name)
+    - [kopi c di lo gah dai](coffee_name)
+    - [kopi pua sio](coffee_name)
+    - [kopi o pua sio](coffee_name)
+    - [kopi c pua sio](coffee_name)
+    - [kopi po pua sio](coffee_name)
+    - [kopi o po pua sio](coffee_name)
+    - [kopi c po pua sio](coffee_name)
+    - [kopi gau pua sio](coffee_name)
+    - [kopi o gau pua sio](coffee_name)
+    - [kopi c gau pua sio](coffee_name)
+    - [kopi di lo pua sio](coffee_name)
+    - [kopi o di lo pua sio](coffee_name)
+    - [kopi c di lo pua sio](coffee_name)
+    - [kopi siu dai pua sio](coffee_name)
+    - [kopi o siu dai pua sio](coffee_name)
+    - [kopi c siu dai pua sio](coffee_name)
+    - [kopi po siu dai pua sio](coffee_name)
+    - [kopi o po siu dai pua sio](coffee_name)
+    - [kopi c po siu dai pua sio](coffee_name)
+    - [kopi gau siu dai pua sio](coffee_name)
+    - [kopi o gau siu dai pua sio](coffee_name)
+    - [kopi c gau siu dai pua sio](coffee_name)
+    - [kopi di lo siu dai pua sio](coffee_name)
+    - [kopi o di lo siu dai pua sio](coffee_name)
+    - [kopi c di lo siu dai pua sio](coffee_name)
+    - [kopi o kosong pua sio](coffee_name)
+    - [kopi c kosong pua sio](coffee_name)
+    - [kopi o po kosong pua sio](coffee_name)
+    - [kopi c po kosong pua sio](coffee_name)
+    - [kopi o gau kosong pua sio](coffee_name)
+    - [kopi c gau kosong pua sio](coffee_name)
+    - [kopi o di lo kosong pua sio](coffee_name)
+    - [kopi c di lo kosong pua sio](coffee_name)
+    - [kopi gah dai pua sio](coffee_name)
+    - [kopi o gah dai pua sio](coffee_name)
+    - [kopi c gah dai pua sio](coffee_name)
+    - [kopi po gah dai pua sio](coffee_name)
+    - [kopi o po gah dai pua sio](coffee_name)
+    - [kopi c po gah dai pua sio](coffee_name)
+    - [kopi gau gah dai pua sio](coffee_name)
+    - [kopi o gau gah dai pua sio](coffee_name)
+    - [kopi c gau gah dai pua sio](coffee_name)
+    - [kopi di lo gah dai pua sio](coffee_name)
+    - [kopi o di lo gah dai pua sio](coffee_name)
+    - [kopi c di lo gah dai pua sio](coffee_name)
+    - [kopi peng](coffee_name)
+    - [kopi o peng](coffee_name)
+    - [kopi c peng](coffee_name)
+    - [kopi po peng](coffee_name)
+    - [kopi o po peng](coffee_name)
+    - [kopi c po peng](coffee_name)
+    - [kopi gau peng](coffee_name)
+    - [kopi o gau peng](coffee_name)
+    - [kopi c gau peng](coffee_name)
+    - [kopi di lo peng](coffee_name)
+    - [kopi o di lo peng](coffee_name)
+    - [kopi c di lo peng](coffee_name)
+    - [kopi siu dai peng](coffee_name)
+    - [kopi o siu dai peng](coffee_name)
+    - [kopi c siu dai peng](coffee_name)
+    - [kopi po siu dai peng](coffee_name)
+    - [kopi o po siu dai peng](coffee_name)
+    - [kopi c po siu dai peng](coffee_name)
+    - [kopi gau siu dai peng](coffee_name)
+    - [kopi o gau siu dai peng](coffee_name)
+    - [kopi c gau siu dai peng](coffee_name)
+    - [kopi di lo siu dai peng](coffee_name)
+    - [kopi o di lo siu dai peng](coffee_name)
+    - [kopi c di lo siu dai peng](coffee_name)
+    - [kopi o kosong peng](coffee_name)
+    - [kopi c kosong peng](coffee_name)
+    - [kopi o po kosong peng](coffee_name)
+    - [kopi c po kosong peng](coffee_name)
+    - [kopi o gau kosong peng](coffee_name)
+    - [kopi c gau kosong peng](coffee_name)
+    - [kopi o di lo kosong peng](coffee_name)
+    - [kopi c di lo kosong peng](coffee_name)
+    - [kopi gah dai peng](coffee_name)
+    - [kopi o gah dai peng](coffee_name)
+    - [kopi c gah dai peng](coffee_name)
+    - [kopi po gah dai peng](coffee_name)
+    - [kopi o po gah dai peng](coffee_name)
+    - [kopi c po gah dai peng](coffee_name)
+    - [kopi gau gah dai peng](coffee_name)
+    - [kopi o gau gah dai peng](coffee_name)
+    - [kopi c gau gah dai peng](coffee_name)
+    - [kopi di lo gah dai peng](coffee_name)
+    - [kopi o di lo gah dai peng](coffee_name)
+    - [kopi c di lo gah dai peng](coffee_name)
+
 
 - intent: inform_email
   examples: |
