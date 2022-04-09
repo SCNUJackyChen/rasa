@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antique Bakery Cafe HTML Template by Tooplate</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600&family=Oswald:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/all.min.css"> <!-- fontawesome -->
+    <!-- <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="static/css/tailwind.css">
+    <link rel="stylesheet" href="static/css/tooplate-antique-cafe.css">
+     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+	 <!--fonts-->
+     <!--//fonts <link href="static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />-->
+
+	 <!-- //for-mobile-apps -->
+	<!-- js -->
+	<!-- js -->
+<!--
+
+Tooplate 2126 Antique Cafe
+
+https://www.tooplate.com/view/2126-antique-cafe
+
+-->
+</head>
+<body>
+    <div class="container" >
+    <div class="chatbox">
+        <div class="chatbox__support">
+            <div class="chatbox__header">
+                <div class="chatbox__image--header">
+                    <img src="https://img.icons8.com/bubbles/50/fa314a/reddit.png" alt="image">
+                </div>
+                <div class="chatbox__content--header">
+                    <h4 class="chatbox__heading--header">Chat support</h4>
+                    <p class="chatbox__description--header">Hi. My name is Sam. </p>
+                    <p class="chatbox__description--header">Do you want me speak to you?
+                        <input class="btn btn btn-secondary active"  id= 'chatbox__synth' type="checkbox" > Yes</p>
+
+                </div>
+            </div>
+            <div class="chatbox__messages">
+<div class="messages__item messages__item--visitor">How can I help you?</div>
+<div>
+      <input  class="inline-block text-white text-1xl pl-6 pr-8 py-3 rounded-lg transition tm-bg-brown" id="chatbox__content" type="submit" value="Coffee Order" >
+    </div>
+
+                <div>
+      <input class="inline-block text-white text-1xl pl-6 pr-6 py-3 rounded-lg transition tm-bg-brown"  id="chatbox__content1"    type="submit" value="User Feedback">
+</div>
+
+                 <div>
+      <input class="inline-block text-white text-1xl pl-10 pr-12 py-3 rounded-lg transition tm-bg-brown" id="chatbox__content2"    type="submit" value="Chit Chat">
+</div>
+
+                <div>
+
+                </div>
+            </div>
+            <div class="chatbox__footer">
+                <input type="text" id="chat__sent" placeholder="Write a message..." width = auto>
+                 <button id = 'start-btn'  ><img id="img-mic" src="{{ url_for('static', filename='images/mic8.svg') }}" width="20" height="20" /></button>
+                <button class="chatbox__send--footer send__button">Send</button>
+            </div>
+        </div>
+        <div class="chatbox__button">
+            <button><img src="{{ url_for('static', filename='images/icons8-reddit.svg') }}" /></button>
+
+ <script type="text/javascript" src="{{ url_for('static', filename='voiceRec.js') }}"></script>
+        </div>
+    </div>
+</div>
+    <!-- Intro -->
+    <div id="intro" class="parallax-window" data-parallax="scroll" data-image-src="static/img/antique-cafe-bg-01.jpg">
+        <nav id="tm-nav" class="fixed w-full">
+            <div class="tm-container mx-auto px-2 md:py-6 text-right">
+                <button class="md:hidden py-2 px-2" id="menu-toggle"><i class="fas fa-2x fa-bars tm-text-gold"></i></button>
+                <ul class="mb-3 md:mb-0 text-2xl font-normal flex justify-end flex-col md:flex-row">
+                    <li class="inline-block mb-4 mx-4"><a href="#intro" class="tm-text-gold py-1 md:py-3 px-4">Intro</a></li>
+                    <li class="inline-block mb-4 mx-4"><a href="#menu" class="tm-text-gold py-1 md:py-3 px-4">Menu</a></li>
+                    <li class="inline-block mb-4 mx-4"><a href="#about" class="tm-text-gold py-1 md:py-3 px-4">About</a></li>
+                    <li class="inline-block mb-4 mx-4"><a href="#contact" class="tm-text-gold py-1 md:py-3 px-4">Contact</a></li>
+                </ul>
+            </div>            
+        </nav>
+        <div class="container mx-auto px-2 tm-intro-width">
+            <div class="sm:pb-60 sm:pt-48 py-20">
+                <div class="bg-black bg-opacity-70 p-12 mb-5 text-center">
+                    <h1 class="text-white text-5xl tm-logo-font mb-5">Coffee Fun</h1>
+                    <p class="tm-text-gold tm-text-2xl">TASTE THE MELLOW COFFEE</p>
+                    <p class="tm-text-gold tm-text-2xl">ENJOY THE SLOW LIFE</p>
+                </div>    
+                <div class="bg-black bg-opacity-70 p-10 mb-5">
+                    <p class="text-white leading-8 text-sm font-light">
+                        We are seld singapore coffee, which all the expirties of kopi, everything your like we have.
+                    	If you have any question, please <a rel="nofollow" href="" target="_parent">send us a message</a>. </p>
+                </div>
+                <div class="text-center">
+                    <div class="inline-block">
+                        <a href="#menu" class="flex justify-center items-center bg-black bg-opacity-70 py-6 px-8 rounded-lg font-semibold tm-text-2xl tm-text-gold hover:text-gray-200 transition">
+                            <i class="fas fa-coffee mr-3"></i>
+                            <span>Let's explore...</span>                        
+                        </a>
+                    </div>                    
+                </div>                
+            </div>
+        </div>        
+    </div>
+    <!-- Cafe Menu -->
+    <div id="menu" class="parallax-window" data-parallax="scroll" data-image-src="static/img/antique-cafe-bg-02.jpg">
+        <div class="container mx-auto tm-container py-24 sm:py-48">
+            <div class="text-center mb-16">
+                <h2 class="bg-white tm-text-brown py-6 px-12 text-4xl font-medium inline-block rounded-md">Our Kopi Menu</h2>
+            </div>            
+            <div class="flex flex-col lg:flex-row justify-around items-center">
+                <div class="flex-1 m-5 rounded-xl px-4 py-6 sm:px-8 sm:py-10 tm-bg-brown tm-item-container">
+                    <div class="flex items-start mb-6 tm-menu-item">
+                        <img src="static/img/menu-item-1.jpg" alt="Image" class="rounded-md">
+                        <div class="ml-3 sm:ml-6">
+                            <h3 class="text-lg sm:text-xl mb-2 sm:mb-3 tm-text-yellow">Kopi O Sui Dai</h3>
+                            <div class="text-white text-md sm:text-lg font-light mb-1">S $3.50</div>
+                            <div class="text-white text-md sm:text-lg font-light">L $6.50</div>
+                        </div>                    
+                    </div>
+                    <div class="flex items-start mb-6 tm-menu-item">
+                        <img src="static/img/menu-item-2.jpg" alt="Image" class="rounded-md">
+                        <div class="ml-3 sm:ml-6">
+                            <h3 class="text-lg sm:text-xl mb-2 sm:mb-3 tm-text-yellow">Kopi C Sui Dai</h3>
+                            <div class="text-white text-md sm:text-lg font-light mb-1">S $3.50 </div>
+                            <div class="text-white text-md sm:text-lg font-light">L $6.50</div>
+                        </div>                    
+                    </div>
+                    <div class="flex items-start mb-6 tm-menu-item">
+                        <img src="static/img/menu-item-3.jpg" alt="Image" class="rounded-md">
+                        <div class="ml-3 sm:ml-6">
+                            <h3 class="text-lg sm:text-xl mb-2 sm:mb-3 tm-text-yellow">Kopi O Gau Siu Dai</h3>
+                            <div class="text-white text-md sm:text-lg font-light mb-1">M $3.75</div>
+                            <div class="text-white text-md sm:text-lg font-light">L $6.75</div>
+                        </div>                    
+                    </div>
+                    <div class="flex items-start mb-6 tm-menu-item">
+                        <img src="static/img/menu-item-4.jpg" alt="Image" class="rounded-md">
+                        <div class="ml-3 sm:ml-6">
+                            <h3 class="text-lg sm:text-xl tm-text-yellow mb-1">Copi O Kosong</h3>
+                            <h3 class="text-lg sm:text-xl mb-2 sm:mb-3 tm-text-yellow">Kopi O Gah Dai</h3>
+                            <div class="text-white text-md sm:text-lg font-light">Size M $3.75 . L $6.75</div>
+                        </div>                    
+                    </div>
+                </div>
+                <div class="flex-1 m-5 rounded-xl px-4 py-6 sm:px-8 sm:py-10 tm-bg-brown tm-item-container">
+                    <div class="flex items-start justify-end mb-6 tm-menu-item-2">
+                        <div class="text-right mr-6">
+                            <h3 class="text-lg sm:text-xl mb-2 sm:mb-3 tm-text-yellow">Kopi O Pua Sio</h3>
+                            <div class="text-white text-md sm:text-lg font-light mb-1">Small $3</div>
+                            <div class="text-white text-md sm:text-lg font-light">Large $6</div>
+                        </div>
+                        <img src="static/img/menu-item-5.jpg" alt="Image" class="rounded-md">
+                    </div>
+                    <div class="flex items-start justify-end mb-6 tm-menu-item-2">
+                        <div class="text-right mr-6">
+                            <h3 class="text-lg sm:text-xl mb-2 sm:mb-3 tm-text-yellow">Kopi Peng</h3>
+                            <div class="text-white text-md sm:text-lg font-light mb-1">Small $3.50</div>
+                            <div class="text-white text-md sm:text-lg font-light">Large $6.50</div>
+                        </div>
+                        <img src="static/img/menu-item-6.jpg" alt="Image" class="rounded-md">
+                    </div>
+                    <div class="flex items-start justify-end mb-6 tm-menu-item-2">
+                        <div class="text-right mr-6">
+                            <h3 class="text-lg sm:text-xl mb-2 sm:mb-3 tm-text-yellow">Kopi C Peng</h3>
+                            <div class="text-white text-md sm:text-lg font-light mb-1">Small $3.8</div>
+                            <div class="text-white text-md sm:text-lg font-light">Large $6.8</div>
+                        </div>   
+                        <img src="static/img/menu-item-7.jpg" alt="Image" class="rounded-md">
+                    </div>
+                    <div class="flex items-start justify-end mb-6 tm-menu-item-2">                    
+                        <div class="text-right mr-6">
+                            <h3 class="text-lg sm:text-xl tm-text-yellow mb-1">Kopi Gau Peng</h3>
+                            <h3 class="text-lg sm:text-xl mb-2 sm:mb-3 tm-text-yellow">Kopi O Sui Dai Peng</h3>
+                            <div class="text-white text-md sm:text-lg font-light">Small $3.6 . Large $6.6</div>
+                        </div> 
+                        <img src="static/img/menu-item-8.jpg" alt="Image" class="rounded-md">
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>
+    <div id="about" class="parallax-window" data-parallax="scroll" data-image-src="static/img/antique-cafe-bg-03.jpg">
+        <div class="container mx-auto tm-container py-24 sm:py-48">
+            <div class="tm-item-container sm:ml-auto sm:mr-12 mx-auto sm:px-0 px-4">
+                <div class="bg-white bg-opacity-80 p-12 pb-14 rounded-xl mb-5">
+                    <h2 class="mb-6 tm-text-green text-4xl font-medium">About our cafe</h2>
+                    <p class="mb-6 text-base leading-8">
+                       Cafe Asia will showcase an array of equipment, machinery, accessories,
+                and other supplies and products for the effective running of coffee establishments and tea businesses.
+                   </p>
+                    <p class="text-base leading-8">
+                        If you wish to <a rel="nofollow" href=" " target="_parent">support us</a> Thank you. </p>
+                </div>
+                <a href="#contact" class="inline-block tm-bg-green transition text-white text-xl pt-3 pb-4 px-8 rounded-md">
+                    <i class="far fa-comments mr-4"></i>
+                    Contact
+                </a>
+            </div>           
+        </div>        
+    </div>
+    <div id="contact" class="parallax-window relative" data-parallax="scroll" data-image-src="static/img/antique-cafe-bg-04.jpg">
+        <div class="container mx-auto tm-container pt-24 pb-48 sm:py-48">
+            <div class="flex flex-col lg:flex-row justify-around items-center lg:items-stretch">
+                <div class="flex-1 rounded-xl px-10 py-12 m-5 bg-white bg-opacity-80 tm-item-container">
+                    <h2 class="text-3xl mb-6 tm-text-green">Contact Us</h2>
+                    <p class="mb-6 text-lg leading-8">
+                        we are around clementi, you can find here by google map.
+                        #1-2323, Block 411, Singapore. Postcode: 140214
+                    </p>
+                    <p class="mb-10 text-lg">
+                        <span class="block mb-2">Tel: <a href="tel:8558 0000" class="hover:text-yellow-600 transition">8558 0000</a></span>
+                        <span class="block">Email: <a href="" class="hover:text-yellow-600 transition">CoffeeFun@gmail.com</a></span>
+                    </p>
+                    <div class="text-center">
+                        <a href="https://www.google.com/maps" class="inline-block text-white text-2xl pl-10 pr-12 py-6 rounded-lg transition tm-bg-green">
+                            <i class="fas fa-map-marked-alt mr-8"></i>
+                            Open Maps
+                        </a>
+                    </div>                    
+                </div>
+                <div class="flex-1 rounded-xl p-12 pb-14 m-5 bg-black bg-opacity-50 tm-item-container">
+                    <form action="" method="POST" class="text-lg">
+                        <input type="text" name="name" class="input w-full bg-black border-b bg-opacity-0 text-white px-0 py-4 mb-4 tm-border-gold" placeholder="Name" required="" />
+                        <input type="email" name="email" class="input w-full bg-black border-b bg-opacity-0 text-white px-0 py-4 mb-4 tm-border-gold" placeholder="Email" required="" />
+                        <textarea rows="6" name="message" class="input w-full bg-black border-b bg-opacity-0 text-white px-0 py-4 mb-4 tm-border-gold" placeholder="Message..." required=""></textarea>
+                        <div class="text-right">
+                            <button type="submit" class="text-white hover:text-yellow-500 transition">Send it</button>
+                        </div>                        
+                      </form>
+                </div>
+            </div>
+            <footer class="absolute bottom-0 left-0 w-full">
+                <div class="text-white container mx-auto tm-container p-8 text-lg flex flex-col md:flex-row justify-between">
+                    <span>Copyright 2022 Coffee Fun. All rights reserved.</span>
+                </div>                
+            </footer>
+        </div>        
+    </div>    
+
+
+    <script src="static/js/jquery-3.6.0.min.js"></script>
+    <script src="static/js/parallax.min.js"></script>
+    <script src="static/js/jquery.singlePageNav.min.js"></script>
+      <script>
+        $SCRIPT_ROOT = {{ request.script_root|tojson }};
+    </script>
+    <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
+
+    <script>
+
+        function checkAndShowHideMenu() {
+            if(window.innerWidth < 768) {
+                $('#tm-nav ul').addClass('hidden');                
+            } else {
+                $('#tm-nav ul').removeClass('hidden');
+            }
+        }
+
+        $(function(){
+            var tmNav = $('#tm-nav');
+            tmNav.singlePageNav();
+
+            checkAndShowHideMenu();
+            window.addEventListener('resize', checkAndShowHideMenu);
+
+            $('#menu-toggle').click(function(){
+                $('#tm-nav ul').toggleClass('hidden');
+            });
+
+            $('#tm-nav ul li').click(function(){
+                if(window.innerWidth < 768) {
+                    $('#tm-nav ul').addClass('hidden');
+                }                
+            });
+
+            $(document).scroll(function() {
+                var distanceFromTop = $(document).scrollTop();
+
+                if(distanceFromTop > 100) {
+                    tmNav.addClass('scroll');
+                } else {
+                    tmNav.removeClass('scroll');
+                }
+            });
+            
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

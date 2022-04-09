@@ -4,3 +4,4 @@ models/*
 mysql
 mlruns
 mrc/my_model
+actions/__pycache__

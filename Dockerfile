@@ -7,6 +7,8 @@ RUN python -m pip install openpyxl
 RUN python -m pip install nltk
 RUN python -m pip install fuzzywuzzy
 RUN python -m pip install transformers
+RUN python -m pip install sentencepiece
+RUN python -m pip install farm-haystack
 RUN python -m pip install torch --extra-index-url https://download.pytorch.org/whl/cpu
 
 WORKDIR /app

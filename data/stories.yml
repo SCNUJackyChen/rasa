@@ -6,6 +6,8 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
+  - action: action_reset_coffee_preference_form
+  - action: action_reset_customer_info_form
   - active_loop: null
 
 
@@ -135,6 +137,7 @@ stories:
   steps:
   - intent: feedback
   - action: utter_ask_feedback
+  - action: action_reset_coffee_preference_form
   - intent: inform_feedback
   - action: action_get_sentiments_score
   - action: action_submit_user_feedback
@@ -146,6 +149,8 @@ stories:
   - intent: chitchat_trigger
   - action: utter_ask_me_coffee_question
   - action: action_reset_is_end
+  - action: action_reset_coffee_preference_form
+  - action: action_reset_customer_info_form
   - action: chitchat_form
   - active_loop: chitchat_form
   - slot_was_set:
@@ -160,6 +165,8 @@ stories:
   steps:
   - intent: chitchat_trigger
   - action: utter_ask_me_coffee_question
+  - action: action_reset_customer_info_form
+  - action: action_reset_coffee_preference_form  
   - action: action_reset_is_end
   - action: chitchat_form
   - active_loop: chitchat_form

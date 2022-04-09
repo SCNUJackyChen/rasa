@@ -1,4 +1,4 @@
-
+########### 流程1 Coffee preference collection ###########
 ###### Case 1 直接说出咖啡名 ###############
 Your input ->  hi                                                         
 Hi! Welcome to CoffeeFun! What can I help for you?
@@ -15,74 +15,164 @@ State: warm
 Milkness: no milk
 Strength: normal
 Is that right?
-Your input ->  yes                                                        
-Now I need your shipping information.
-What is your email?
-Your input ->  chenziqi@u.nus.edu                                         
-Please give me your address?
-Your input ->  block 511                                                  
-What's your name?
-Your input ->  James                                                      
-OK. Everything is completed!
-Please confirm your delivery information: Your name is James. The delivery address is 511. The email is chenziqi@u.nus.edu. Is that right?
-Your input ->  yes                                                        
-Your order has been placed. We will deliver it as soon as possible. Thanks!
 
-
-############# Case 2 一句话包含多个属性 ###################
-Your input ->  hi                                                         
-Hi! Welcome to CoffeeFun! What can I help for you?
-Your input ->  drink coffee                                               
-What kind of coffee? (If you don't know what you want, no worry, let me help you!)
-Your input ->  iced coffee with milk                                      
-Tell me your preference!
-Sweetness?
-Your input ->  sweeter                                                    
-What about the strength? Weak, normal, strong or stronger(no water)?      
-Your input ->  normal                                                     
-Condensed milk, evaporated milk or no milk?
-Your input ->  condensed milk                                             
-Which size?
-Your input ->  big                                                        
+####### Case 2 用户输入咖啡名出错，触发纠错功能 ##########
+Your input ->  hi                                         
+Hi! Welcome to CoffeeFun! What can I help for you?        
+Your input ->  I want a cup of coffee                     
+What kind of coffee? (If you don't know what you want, no 
+worry, let me help you!)
+Your input ->  kopi ccc                                   
+I cannot find this coffee. I'm assuming you mis-spelled.  
+Do you mean kopi? Please input again.
+What coffee do you want to order?
+Your input ->  kopi                                       
+Which size? (large, medium, small)
+Your input ->  large                                      
 OK. Thanks!
-Please confirm your order: you ordered a kopi gah dai peng
-Sweetness: sweeter
-Size: big
+Please confirm your order: you ordered a kopi
+Sweetness: half
+Size: large
+State: warm
+Milkness: condensed milk
+Strength: normal
+Is that right?
+
+###### Case 3 用户输入含有多个槽值 ###############
+Your input ->  hi                                         
+Hi! Welcome to CoffeeFun! What can I help for you?        
+Your input ->  I want a cup of coffee                     
+What kind of coffee? (If you don't know what you want, no 
+worry, let me help you!)
+Your input ->  iced coffee with condensed milk            
+Tell me your preference!
+Sweetness? (no sugar, less sweet, half, sweeter)
+Your input ->  half                                       
+What about the strength? Weak, normal, strong or stronger(no water)?
+Your input ->  normal                                     
+Which size? (large, medium, small)
+Your input ->  small                                      
+OK. Thanks!
+According to your preference, we recommend you to order Kopi Peng
+Please confirm your order: you ordered a Kopi Peng        
+Sweetness: half
+Size: small
 State: iced
 Milkness: condensed milk
 Strength: normal
 Is that right?
-Your input ->  yes                                                        
-Now I need your shipping information.
-What is your email?
-Your input ->  
 
-######################## Case 3 没有说咖啡名也没有说属性 ######################
-Your input ->  hi                                                         
-Hi! Welcome to CoffeeFun! What can I help for you?
-Your input ->  drink coffee                                               
-What kind of coffee? (If you don't know what you want, no worry, let me help you!)
-Your input ->  help me                                 
+###### Case 4 用户没有idea，希望得到指引 ###############
+Your input ->  hi                                         
+Hi! Welcome to CoffeeFun! What can I help for you?        
+Your input ->  I want a cup of coffee                            
+What kind of coffee? (If you don't know what you want, no 
+worry, let me help you!)
+Your input ->  no idea                                    
 Tell me your preference!
-Sweetness?
-Your input ->  sweeter                                                    
-What about the strength? Weak, normal, strong or stronger(no water)?      
-Your input ->  normal           
+Sweetness? (no sugar, less sweet, half, sweeter)
+Your input ->  half                                       
+What about the strength? Weak, normal, strong or stronger(no water)?
+Your input ->  normal                                     
 Iced, lukewarm or warm?
-Your input ->  iced                                  
+Your input ->  iced                                       
 Condensed milk, evaporated milk or no milk?
-Your input ->  condensed milk                                             
-Which size?
-Your input ->  big                                                        
+Your input ->  no milk                                    
+Which size? (large, medium, small)
+Your input ->  small                                      
 OK. Thanks!
-Please confirm your order: you ordered a kopi gah dai peng
-Sweetness: sweeter
-Size: big
+According to your preference, we recommend you to order Kopi O Peng
+Please confirm your order: you ordered a Kopi O Peng      
+Sweetness: half
+Size: small
+State: iced
+Milkness: no milk
+Strength: normal
+Is that right?
+
+###### Case 5 用户没有确认，rasa重新搜集preference ###############
+OK. Thanks!
+Please confirm your order: you ordered a kopi
+Sweetness: half
+Size: large
+State: warm
+Milkness: condensed milk
+Strength: normal
+Is that right?
+Your input ->  no                                         
+What kind of coffee do you want? (If you don't know what you want, no worry, let me help you!)
+
+########### 流程2 Customer Info collection ###########
+###### Case 1 搜集用户信息，用户同意  ###############
+OK. Thanks!
+According to your preference, we recommend you to order Kopi Peng
+Please confirm your order: you ordered a Kopi Peng        
+Sweetness: half
+Size: small
 State: iced
 Milkness: condensed milk
 Strength: normal
 Is that right?
-Your input ->  yes                                                        
+Your input ->  yes                                        
 Now I need your shipping information.
 What is your email?
-Your input ->  
+Your input ->  team6@coffeefun.com                        
+Please give me your address?
+Your input ->  Bank of China Building, 4 Battery Rd, 0499 
+08                                                        
+What's your name?
+Your input ->  James                                      
+OK. Everything is completed!
+Please confirm your delivery information: Your name is James. The delivery address is 049908. The email is team6@coffeefun.com. Is that right?
+Your input ->  yes                                        
+Your order has been placed. We will deliver it as soon as 
+possible. Thanks!
+
+###### Case 2 搜集用户信息，用户拒绝  ###############
+OK. Thanks!
+According to your preference, we recommend you to order Kopi Peng
+Please confirm your order: you ordered a Kopi Peng        
+Sweetness: half
+Size: small
+State: iced
+Milkness: condensed milk
+Strength: normal
+Is that right?
+Your input ->  yes                                        
+Now I need your shipping information.
+What is your email?
+Your input ->  team6@coffeefun.com                        
+Please give me your address?
+Your input ->  Bank of China Building, 4 Battery Rd, 0499 
+08                                                        
+What's your name?
+Your input ->  James                                      
+OK. Everything is completed!
+Please confirm your delivery information: Your name is James. The delivery address is 049908. The email is team6@coffeefun.com. Is that right?
+Your input ->  no                                        
+Now I need your shipping information.
+What is your email?
+
+########### 流程3 用户反馈 ###########
+###### Case 1 多aspect情感分析  ###############
+Your input ->  feedback                                   
+Do you have any comments or suggestions for us?
+Your input ->  The environment is good, but the price is  
+a bit expensive                                           
+Your feedback is well received! Thank you!
+
+
+########### 流程4 咖啡知识问答 ###########
+###### Case 1  ###############
+Your input ->  chitchat
+Ask me anything about coffee!
+Your input ->  what is kopi?
+Let me think...
+Kopi: Black Coffee with condensed milk
+Your input ->  is coffee good for health?
+Let me think...
+A 2016 meta-analysis showed that coffee consumption was associated with a reduced risk of death in patients who have had a myocardial infarction.
+Your input ->  what goes best with Kopi for breakfast?
+Let me think...
+Standard breakfast fare is the Hainanese-Western half-boiled eggs, kaya toast and coffee set. 
+You’re supposed to break your own very runny eggs into a bowl and season them to taste with soya sauce. Kaya is coconut jam made from coconut, eggs and sugar.

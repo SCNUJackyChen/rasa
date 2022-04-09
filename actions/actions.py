@@ -60,6 +60,7 @@ class ValidateCoffeePreferenceForm(FormValidationAction):
         else:
             # validation failed, set this slot to None so that the
             # user will be asked for the slot again
+            dispatcher.utter_message(text=f"Please input valid option :)")
             return {"Sweetness": None}
 
     def validate_State(
@@ -77,6 +78,7 @@ class ValidateCoffeePreferenceForm(FormValidationAction):
         else:
             # validation failed, set this slot to None so that the
             # user will be asked for the slot again
+            dispatcher.utter_message(text=f"Please input valid option :)")
             return {"State": None}
 
     def validate_Milkness(
@@ -94,6 +96,7 @@ class ValidateCoffeePreferenceForm(FormValidationAction):
         else:
             # validation failed, set this slot to None so that the
             # user will be asked for the slot again
+            dispatcher.utter_message(text=f"Please input valid option :)")
             return {"Milkness": None}
     
     def validate_Strength(
@@ -111,6 +114,7 @@ class ValidateCoffeePreferenceForm(FormValidationAction):
         else:
             # validation failed, set this slot to None so that the
             # user will be asked for the slot again
+            dispatcher.utter_message(text=f"Please input valid option :)")
             return {"Strength": None}
 
     def validate_Size(
@@ -128,6 +132,7 @@ class ValidateCoffeePreferenceForm(FormValidationAction):
         else:
             # validation failed, set this slot to None so that the
             # user will be asked for the slot again
+            dispatcher.utter_message(text=f"Please input valid option :)")
             return {"Size": None}
 
 
@@ -248,7 +253,7 @@ class ActionSelectCoffeeNameByPreference(Action):
         strength = tracker.get_slot('Strength')
         state = tracker.get_slot('State')
 
-        cursor.execute('select Name from rasa.kopi_list where sweetness = %s and milkness = %s and strength = %s and state = %s limit 1;',[sweetness,milkness,strength,state])
+        cursor.execute('select Name from rasa.kopi_list where sweetness = %s and milkness = %s and strength = %s and state like %s limit 1;',[sweetness,milkness,strength,'%'+state+'%'])
         record = cursor.fetchone()
 
         res = ""
@@ -313,8 +318,8 @@ class ActionSubmitUserFeedback(Action):
         m = str(time.strftime("%Y%m%d%H%M%S", time.localtime()))
 
         for i, p in enumerate(res):
-            aspect, review = p
-            cursor.execute('insert into rasa.feedback(idfeedback,aspect,review) values (%s,%s,%s);',[m + str(i), aspect, review])
+            aspect, sentiment = p
+            cursor.execute('insert into rasa.feedback(idfeedback,aspect,sentiment) values (%s,%s,%s);',[m + str(i), aspect, sentiment])
             cnx.commit() 
 
         return []

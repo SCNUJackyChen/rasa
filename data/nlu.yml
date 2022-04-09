@@ -112,6 +112,9 @@ nlu:
     - The [service](service) is very poor
     - The [clerk](service) couldn't respond to my needs in time
     - [Customer service](service) is good
+    - The [environment](environment) is good, but the price(service) is a bit expensive
+    - price(service) too expensive
+    - good place(environment) but the worker(service) is not friendly
 
 - intent: chitchat_trigger
   examples: |

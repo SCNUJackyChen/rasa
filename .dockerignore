@@ -4,3 +4,4 @@ venv
 .rasa/*
 **/*.md
 mysql
+mlruns/*
