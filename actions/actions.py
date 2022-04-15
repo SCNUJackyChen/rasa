@@ -162,8 +162,8 @@ class ValidateCoffeeNameForm(FormValidationAction):
             if (len(hint) == 0):
                 dispatcher.utter_message(text=f"Try input kopi, kopi O and kopi C")
             else:
-                hint = ', '.join(hint)
-                dispatcher.utter_message(text=f"Do you mean " + hint + "? Please input again.")
+                hint = ' '.join(hint)
+                dispatcher.utter_message(text=f"Do you mean \"" + hint + "\"? Please input again.")
             return {"coffee_name": None}
 
 class ActionConfirmCoffeeName(Action):
@@ -258,8 +258,9 @@ class ActionSelectCoffeeNameByPreference(Action):
 
         res = ""
         ret = []
-        if record[0] is None:
+        if record is None:
             res = "Sorry, there is no coffee to suit your taste" 
+            ret = [SlotSet("Sweetness", None), SlotSet("Milkness", None), SlotSet("Strength", None), SlotSet("State", None)]
         else:           
             res = "According to your preference, we recommend you to order " + record[0]
             ret = [SlotSet("coffee_name", record[0])]
@@ -314,7 +315,8 @@ class ActionSubmitUserFeedback(Action):
     
     def run(self, dispatcher, tracker, domain):
         res = tracker.get_slot('ABSA_result')
-
+        sentence_setntiment = tracker.current_state()["latest_message"]["sentiments"][0]["value"]
+        sentence = tracker.current_state()["latest_message"]["text"]
         m = str(time.strftime("%Y%m%d%H%M%S", time.localtime()))
 
         for i, p in enumerate(res):
@@ -322,6 +324,8 @@ class ActionSubmitUserFeedback(Action):
             cursor.execute('insert into rasa.feedback(idfeedback,aspect,sentiment) values (%s,%s,%s);',[m + str(i), aspect, sentiment])
             cnx.commit() 
 
+        cursor.execute('insert into rasa.review(idreview, comment, sentiment) values (%s,%s,%s);', [m, sentence, sentence_setntiment])
+        cnx.commit()
         return []
 
 class ActionResetIsEnd(Action):

@@ -13,18 +13,23 @@ def index_get():
 def predict():
     input_message = request.get_json().get("message")
     # TODO: check if text is valid
-    output_message = []
+    message = []
     try:
       payload = {
                 "sender": "test_user",
                 "message": input_message
             }
       r= requests.post('http://localhost:5005/webhooks/rest/webhook', json=payload)
+      for i in range(len(r.json())):
+        output_message = r.json()[i]['text']
+        message.append({"answer": output_message})
+      '''
       for i in r.json():
-        output_message.append(i['text'])
+        output_message = i['text']
+        '''
     except:
-      output_message = 'There is an exception'
-    message = {"answer": output_message}
+      message.append({"answer": 'There is an exception'})
+
     return jsonify(message)
 
 

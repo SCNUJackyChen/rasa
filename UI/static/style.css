@@ -49,13 +49,21 @@ body {
 
 }
 
-/* BUTTON */
 .chatbox__button {
-  /**text-align: right;  **/
-    position:fixed;
-    left:1200px;
-    top:500px
+/**text-align: right;  **/
+    position: absolute;
+    left: 85%;
+    top: 85%;
+/* top:90%;
+      left:100%; */
 }
+    
+/* .chatbox__text {
+    position: absolute;
+    left: 80%;
+    top: 90%;
+} */
+    
 
 .send__button {
     padding: 6px;
@@ -103,7 +111,7 @@ body {
 
 .chatbox__support {
     background: #f9f9f9;
-    height: 550px;
+    height: 800px;
     width: 500px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
     border-top-left-radius: 20px;
@@ -124,7 +132,7 @@ body {
 }
 
 .chatbox__image--header {
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
 .chatbox__heading--header {
@@ -163,7 +171,26 @@ body {
     background: var(--primary);
     color: white;
 }
+.button__setting {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    float: left;
 
+  border: 1px solid saddlebrown;
+     background-color: #f4511e;
+  border: none;
+  color: white;
+  padding: 8px 18px;
+  text-align: center;
+  font-size: 12px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button__setting:hover {opacity: 1}
 /* FOOTER */
 .chatbox__footer {
     display: flex;
@@ -179,7 +206,7 @@ body {
 }
 
 .chatbox__footer input {
-    width: 80%;
+    width: 85%;
     border: none;
     padding: 10px 30px;
     border-radius: 30px;
@@ -187,8 +214,17 @@ body {
 }
 .chatbox__footer #start-btn {
     position: absolute;
-        top: 500px;
+        top: 750px;
         right: 452px;
+
+        border: none;
+        outline: none;
+}
+
+.chatbox__footer #menu__optial {
+    position: absolute;
+        top: 500px;
+        right: 480px;
 
         border: none;
         outline: none;

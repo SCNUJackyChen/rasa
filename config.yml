@@ -7,14 +7,7 @@ recipe: default.v1
 language: "en"
 
 pipeline:
-# # No configuration for the NLU pipeline was provided. The following default pipeline was used to train your model.
-# # If you'd like to customize it, uncomment and adjust the pipeline.
-# # See https://rasa.com/docs/rasa/tuning-your-model for more information.
   - name: WhitespaceTokenizer
-  # - name: SpacyNLP
-  #   model: en_core_web_md # Install the language package first: python -m spacy download en_core_web_md
-  # - name: SpacyTokenizer
-  # - name: SpacyFeaturizer
   - name: RegexEntityExtractor
     use_regexes: True
   - name: LexicalSyntacticFeaturizer
@@ -26,6 +19,10 @@ pipeline:
   - name: DIETClassifier
     epochs: 100
     constrain_similarities: true
+    # evaluate_on_number_of_examples: 0
+    # evaluate_every_number_of_epochs: 5
+    # tensorboard_log_directory: "./tensorboard/DIET"
+    # tensorboard_log_level: "epoch"
   - name: emotional_analysis.ea.SentimentAnalyzer
   - name: EntitySynonymMapper
   - name: ResponseSelector
@@ -34,21 +31,16 @@ pipeline:
   - name: FallbackClassifier
     threshold: 0.3
     ambiguity_threshold: 0.1
-
-# Configuration for Rasa Core.
-# https://rasa.com/docs/rasa/core/policies/
 policies:
-# # No configuration for policies was provided. The following default policies were used to train your model.
-# # If you'd like to customize them, uncomment and adjust the policies.
-# # See https://rasa.com/docs/rasa/policies for more information.
   - name: RulePolicy
   - name: MemoizationPolicy
-  # - name: UnexpecTEDIntentPolicy
-  #   max_history: 5
-  #   epochs: 100
   - name: TEDPolicy
     max_history: 20
-    epochs: 20
+    epochs: 100
     constrain_similarities: true
+    evaluate_on_number_of_examples: 0
+    evaluate_every_number_of_epochs: 5
+    tensorboard_log_directory: "./tensorboard/TED"
+    tensorboard_log_level: "epoch"
   
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Antique Bakery Cafe HTML Template by Tooplate</title>
+    <title>Coffee Fun</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600&family=Oswald:wght@600&display=swap" rel="stylesheet">
@@ -32,29 +32,40 @@ https://www.tooplate.com/view/2126-antique-cafe
     <div class="chatbox">
         <div class="chatbox__support">
             <div class="chatbox__header">
-                <div class="chatbox__image--header">
-                    <img src="https://img.icons8.com/bubbles/50/fa314a/reddit.png" alt="image">
+                <div class="chatbox__image--header" id="header-processing">
+                    <!-- <img src="https://img.icons8.com/bubbles/50/fa314a/reddit.png" alt="image"> -->
+                    <button id="menu__optial"  ><img src="https://img.icons8.com/bubbles/50/fa314a/reddit.png" width="50" height="50" /></button>
                 </div>
                 <div class="chatbox__content--header">
-                    <h4 class="chatbox__heading--header">Chat support</h4>
-                    <p class="chatbox__description--header">Hi. My name is Sam. </p>
+                    <p class="chatbox__heading--header " id="chatbox__heading__id"  >Chat support </p>
+         <p class="chatbox__heading--header"  id="chatbox__processing">I Am Thinking</p>
+                    <p class="chatbox__description--header">Hi. My name is Honey. </p>
+
                     <p class="chatbox__description--header">Do you want me speak to you?
                         <input class="btn btn btn-secondary active"  id= 'chatbox__synth' type="checkbox" > Yes</p>
+<div id="menu__hidden" style="display:none">
+
+      <button  class="button__setting " id="chatbox__content" type="submit" value="coffer order" >KopiOrder</button>
+
+        <button class="button__setting"  id="chatbox__content1"    type="submit" value="feedback">Feedback</button>
+
+      <button class="button__setting" id="chatbox__content2"    type="submit" value="chitchat">ChitChat</button>
+
+</div>
 
                 </div>
             </div>
-            <div class="chatbox__messages">
-<div class="messages__item messages__item--visitor">How can I help you?</div>
-<div>
-      <input  class="inline-block text-white text-1xl pl-6 pr-8 py-3 rounded-lg transition tm-bg-brown" id="chatbox__content" type="submit" value="Coffee Order" >
-    </div>
 
-                <div>
-      <input class="inline-block text-white text-1xl pl-6 pr-6 py-3 rounded-lg transition tm-bg-brown"  id="chatbox__content1"    type="submit" value="User Feedback">
+              <div class = 'chatbox__optional'>
+
+      <div>
+
+
+
 </div>
-
-                 <div>
-      <input class="inline-block text-white text-1xl pl-10 pr-12 py-3 rounded-lg transition tm-bg-brown" id="chatbox__content2"    type="submit" value="Chit Chat">
+      </div>
+            <div class="chatbox__messages">
+<div class="messages__item messages__item--visitor">How can I help you?
 </div>
 
                 <div>
@@ -62,13 +73,15 @@ https://www.tooplate.com/view/2126-antique-cafe
                 </div>
             </div>
             <div class="chatbox__footer">
+                
                 <input type="text" id="chat__sent" placeholder="Write a message..." width = auto>
                  <button id = 'start-btn'  ><img id="img-mic" src="{{ url_for('static', filename='images/mic8.svg') }}" width="20" height="20" /></button>
                 <button class="chatbox__send--footer send__button">Send</button>
             </div>
         </div>
-        <div class="chatbox__button">
-            <button><img src="{{ url_for('static', filename='images/icons8-reddit.svg') }}" /></button>
+        <div class="chatbox__button">
+            <button class="chatbox__text"><img src="{{ url_for('static', filename='images/icons8-reddit.svg') }}" /></button>
+
 
  <script type="text/javascript" src="{{ url_for('static', filename='voiceRec.js') }}"></script>
         </div>
@@ -96,7 +109,7 @@ https://www.tooplate.com/view/2126-antique-cafe
                 </div>    
                 <div class="bg-black bg-opacity-70 p-10 mb-5">
                     <p class="text-white leading-8 text-sm font-light">
-                        We are seld singapore coffee, which all the expirties of kopi, everything your like we have.
+                        We sell singapore coffee, which all the expirties of kopi, everything your like we have.
                     	If you have any question, please <a rel="nofollow" href="" target="_parent">send us a message</a>. </p>
                 </div>
                 <div class="text-center">
@@ -302,6 +315,24 @@ https://www.tooplate.com/view/2126-antique-cafe
                 });
             });
         });
+    </script>
+<script type="text/javascript">
+    $(document).ready(function (){
+        $("#menu__optial").click(function(){
+            $("#menu__hidden").toggle();
+        })
+    })
+    /*   function addDiv(){
+           var div= $('#menu__hidden').get(0);
+           if(div.style.display == ""){
+               div.style.display = "none";
+           }else{
+               div.style.display = "";
+           }
+
+       }*/
+
+
     </script>
 </body>
 </html>

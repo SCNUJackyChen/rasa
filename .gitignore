@@ -5,3 +5,4 @@ mysql
 mlruns
 mrc/my_model
 actions/__pycache__
+tensorboard

@@ -112,9 +112,9 @@ nlu:
     - The [service](service) is very poor
     - The [clerk](service) couldn't respond to my needs in time
     - [Customer service](service) is good
-    - The [environment](environment) is good, but the price(service) is a bit expensive
-    - price(service) too expensive
-    - good place(environment) but the worker(service) is not friendly
+    - The [environment](environment) is good, but the [price](service) is a bit expensive
+    - [price](service) too expensive
+    - good [place](environment) but the [worker](service) is not friendly
 
 - intent: chitchat_trigger
   examples: |
@@ -171,6 +171,12 @@ nlu:
     - any choice?
     - [iced](State) coffee 
     - [warm](State) coffee with [sugar](Sweetness) 
+
+
+# - intent: inform_kopi_preference
+#   examples: |
+#     - [iced](State) coffee with [milk](Milkiness)
+#     - I want a [sweet](Sweetness) [warm](State) coffee 
 
 - intent: inform_coffee_name
   examples: |
@@ -331,6 +337,7 @@ nlu:
     - [Robert](customer_name)
     - The name is [Mary](customer_name)
     - [Jennifer](customer_name)
+    - [Jacky](customer_name)
 - lookup: Sweetness
   examples: |
     - sweet

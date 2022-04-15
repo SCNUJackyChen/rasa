@@ -7,10 +7,25 @@ var synth = window.speechSynthesis;
 let utter = new SpeechSynthesisUtterance('hi');
    var voices = synth.getVoices();
     utter.text = text;
-    utter.voice = voices[0];
+    utter.voice = voices[4];
      synth.speak(utter);
 }
 }
+function showStatus(){
+   document.getElementById('chatbox__processing') .style.display = "none"
+
+   document.getElementById('chatbox__heading__id') .style.display = "block"
+
+}
+
+function hideStatus(){
+   document.getElementById('chatbox__processing') .style.display = "block"
+
+        document.getElementById('chatbox__heading__id') .style.display = "none"
+}
+
+
+document.getElementById('chatbox__processing') .style.display = "none"
 class Chatbox {
 
     constructor() {
@@ -21,6 +36,7 @@ class Chatbox {
             selectButton: document.querySelector('#chatbox__content'),
             selectButton1: document.querySelector('#chatbox__content1'),
             selectButton2: document.querySelector('#chatbox__content2')
+
 
         }
 
@@ -64,14 +80,18 @@ class Chatbox {
         console.log(text)
     }  */
     onSendButton(chatbox) {
+
         var textField = chatbox.querySelector('#chat__sent');
         let text1 = textField.value
         if (text1 === "") {
             return;
         }
+
+        hideStatus()
       /*  this.testfunction(text1)*/
         let msg1 = { name: "User", message: text1 }
         this.messages.push(msg1);
+
 /* $SCRIPT_ROOT    'http://127.0.0.1:5000/predict'*/
         fetch($SCRIPT_ROOT +'/predict', {
             method: 'POST',
@@ -83,13 +103,18 @@ class Chatbox {
           })
           .then(r => r.json())
           .then(r => {
-            let msg2 = { name: "Sam", message: r.answer };
+              console.log(r);
+              let msg2 ;
+              for (let i = 0; i < r.length; i++) {
+              console.log(r[i]['answer'])
+
+              msg2 = { name: "Sam", message: r[i]['answer'] };
             this.messages.push(msg2);
             console.log(msg2.message);
             textToSpecch(msg2.message);
             this.updateChatText(chatbox)
             textField.value = ''
-
+}
         }).catch((error) => {
             console.error('Error:', error);
             this.updateChatText(chatbox)
@@ -114,16 +139,19 @@ class Chatbox {
           });
 
         const chatmessage = chatbox.querySelector('.chatbox__messages');
+
+       showStatus()
         chatmessage.innerHTML = html;
+
     }
 
     select1SendButton(chatbox) {
-        var textField = chatbox.querySelector('#chatbox__content');
-        let text1 = textField.value
+
+        let text1 = 'hi'
         if (text1 === "") {
             return;
         }
-
+        hideStatus()
         let msg1 = { name: "User", message: text1 }
         this.messages.push(msg1);
 /* $SCRIPT_ROOT    'http://127.0.0.1:5000/predict'*/
@@ -137,11 +165,18 @@ class Chatbox {
           })
           .then(r => r.json())
           .then(r => {
-            let msg2 = { name: "Sam", message: r.answer };
+              console.log(r);
+              let msg2 ;
+              for (let i = 0; i < r.length; i++) {
+              console.log(r[i]['answer'])
+
+              msg2 = { name: "Sam", message: r[i]['answer'] };
             this.messages.push(msg2);
-             textToSpecch(msg2.message);
+            console.log(msg2.message);
+            textToSpecch(msg2.message);
             this.updateChatText(chatbox)
             textField.value = ''
+}
 
         }).catch((error) => {
             console.error('Error:', error);
@@ -150,12 +185,11 @@ class Chatbox {
           });
     }
     select3SendButton(chatbox) {
-        var textField = chatbox.querySelector('#chatbox__content2');
-        let text1 = textField.value
+        let text1 = 'chitchat'
         if (text1 === "") {
             return;
         }
-
+hideStatus()
         let msg1 = { name: "User", message: text1 }
         this.messages.push(msg1);
 /* $SCRIPT_ROOT    'http://127.0.0.1:5000/predict'*/
@@ -169,11 +203,18 @@ class Chatbox {
           })
           .then(r => r.json())
           .then(r => {
-            let msg2 = { name: "Sam", message: r.answer };
+             console.log(r);
+              let msg2 ;
+              for (let i = 0; i < r.length; i++) {
+              console.log(r[i]['answer'])
+
+              msg2 = { name: "Sam", message: r[i]['answer'] };
             this.messages.push(msg2);
-             textToSpecch(msg2.message);
+            console.log(msg2.message);
+            textToSpecch(msg2.message);
             this.updateChatText(chatbox)
             textField.value = ''
+}
 
         }).catch((error) => {
             console.error('Error:', error);
@@ -182,12 +223,11 @@ class Chatbox {
           });
     }
         select2SendButton(chatbox) {
-        var textField = chatbox.querySelector('#chatbox__content1');
-        let text1 = textField.value
+        let text1 = 'feedback'
         if (text1 === "") {
             return;
         }
-
+hideStatus()
         let msg1 = { name: "User", message: text1 }
         this.messages.push(msg1);
 /* $SCRIPT_ROOT    'http://127.0.0.1:5000/predict'*/
@@ -201,11 +241,18 @@ class Chatbox {
           })
           .then(r => r.json())
           .then(r => {
-            let msg2 = { name: "Sam", message: r.answer };
+             console.log(r);
+              let msg2 ;
+              for (let i = 0; i < r.length; i++) {
+              console.log(r[i]['answer'])
+
+              msg2 = { name: "Sam", message: r[i]['answer'] };
             this.messages.push(msg2);
-             textToSpecch(msg2.message);
+            console.log(msg2.message);
+            textToSpecch(msg2.message);
             this.updateChatText(chatbox)
             textField.value = ''
+}
 
         }).catch((error) => {
             console.error('Error:', error);
