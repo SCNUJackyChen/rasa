@@ -6,3 +6,4 @@ mlruns
 mrc/my_model
 actions/__pycache__
 tensorboard
+mysql.zip

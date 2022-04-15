@@ -31,7 +31,7 @@ spell_check = SpellCheck(db["Name"])
 import mysql.connector
 cnx = mysql.connector.connect(user='root',
                              password='123456',
-                             host='localhost', # db for docker
+                             host='db', # db for docker
                              database='rasa',
                              auth_plugin='mysql_native_password')
 cursor = cnx.cursor(buffered=True)
